@@ -1,19 +1,23 @@
 package it.unipv.sfw.rentacar.model.veicolo;
 
 import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecniche;
+import it.unipv.sfw.rentacar.model.veicolo.noleggio.INoleggiabile;
+import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
-public class Auto {
+public class Auto implements INoleggiabile{
 
 	private String targa;
 	private String marca;
 	private String modello;
 	private CaratteristicheTecniche caratteristicheTecniche;
+	private Noleggio statoNoleggio;
 	
-	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche) {
+	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, Noleggio statoNoleggio) {
 		this.targa = targa;
 		this.marca = marca;
 		this.modello = modello;
 		this.caratteristicheTecniche = caratteristicheTecniche;
+		this.statoNoleggio = statoNoleggio;
 	}
 	
 	public String getTarga() {
@@ -47,12 +51,20 @@ public class Auto {
 	public void setCaratteristicheTecniche(CaratteristicheTecniche caratteristicheTecniche) {
 		this.caratteristicheTecniche = caratteristicheTecniche;
 	}
+	
+	public Noleggio getStatoNoleggio() {
+		return statoNoleggio;
+	}
+	
+	@Override
+	public void setStatoNoleggio(Noleggio statoNoleggio) {
+		this.statoNoleggio = statoNoleggio;
+	}
 
 	@Override
 	public String toString() {
 		return "Auto [targa=" + targa + ", marca=" + marca + ", modello=" + modello + ", caratteristicheTecniche="
-				+ caratteristicheTecniche + "]";
+				+ caratteristicheTecniche + ", statoNoleggio=" + statoNoleggio + "]";
 	}
-
 	
 }
