@@ -56,9 +56,16 @@ public class Auto implements INoleggiabile{
 		return statoNoleggio;
 	}
 	
-	@Override
 	public void setStatoNoleggio(Noleggio statoNoleggio) {
 		this.statoNoleggio = statoNoleggio;
+	}
+	
+	@Override
+	public boolean noleggiabile() {
+		if (statoNoleggio.equals(Noleggio.DISPONIBILE)) {
+			return true;
+		}else
+			return false;
 	}
 
 	@Override
@@ -66,5 +73,7 @@ public class Auto implements INoleggiabile{
 		return "Auto [targa=" + targa + ", marca=" + marca + ", modello=" + modello + ", caratteristicheTecniche="
 				+ caratteristicheTecniche + ", statoNoleggio=" + statoNoleggio + "]";
 	}
+
+
 	
 }
