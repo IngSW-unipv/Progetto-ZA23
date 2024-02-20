@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
 import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 
@@ -15,14 +16,18 @@ public class Patente {
 	private LocalDate scadenza;
 	private String[] categorie;
 	
-	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException {
+	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		
 		if (!verificaNumeroPatente(numero)) {
 			throw new NumeroPatenteInvalidoException();
 		}
 		
-		if (verificaScadenzaPatente(dataScadenza)) {
+		if (!verificaScadenzaPatente(dataScadenza)) {
 			throw new PatenteScadutaException();
+		}
+		
+		if (!controlloPatenteB(categorie)) {
+			throw new CategoriaBPatenteException();
 		}
 		
 		this.numero = numero;
@@ -69,7 +74,17 @@ public class Patente {
 		
 		LocalDate dataCorrente = LocalDate.now();
 		
-		return dataScadenza.isBefore(dataCorrente);
+		return dataScadenza.isAfter(dataCorrente);
+	}
+	
+	public boolean controlloPatenteB(String[] categorie) {
+		
+		for (int i = 0; i < categorie.length; i++) {
+			if (categorie[i].equals("B")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -78,17 +93,4 @@ public class Patente {
 				+ "]";
 	}
 	
-	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException {
-		String[] catPat = {"B"}; 
-		
-		
-		try {
-			Patente p = new Patente("AB123456AB", "19/02/2025", catPat);
-			System.out.println(p.toString());
-		} catch (PatenteScadutaException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println("ciao");
-	}
 }
