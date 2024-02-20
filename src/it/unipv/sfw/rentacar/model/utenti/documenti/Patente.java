@@ -1,26 +1,33 @@
 package it.unipv.sfw.rentacar.model.utenti.documenti;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
+import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 
 public class Patente {
 	
 	private String numero;
-	private Date scadenza;
+	private LocalDate scadenza;
 	private String[] categorie;
 	
-	public Patente(String numero, Date scadenza, String[] categorie) throws NumeroPatenteInvalidoException {
+	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException {
 		
 		if (!verificaNumeroPatente(numero)) {
 			throw new NumeroPatenteInvalidoException();
 		}
 		
+		if (verificaScadenzaPatente(dataScadenza)) {
+			throw new PatenteScadutaException();
+		}
+		
 		this.numero = numero;
-		this.scadenza = scadenza;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.scadenza = LocalDate.parse(dataScadenza, formatter);
 		this.categorie = categorie;
 	}
 
@@ -33,11 +40,11 @@ public class Patente {
 	}
 	
 	
-	public Date getScadenza() {
+	public LocalDate getScadenza() {
 		return scadenza;
 	}
 	
-	public void rinnova(Date rinnovo) {
+	public void rinnova(LocalDate rinnovo) {
 		this.scadenza = rinnovo;
 	}
 	
@@ -54,6 +61,16 @@ public class Patente {
 		
 		return matcher.matches();
 	}
+	
+	public boolean verificaScadenzaPatente(String scadenza) {
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dataScadenza = LocalDate.parse(scadenza, formatter);
+		
+		LocalDate dataCorrente = LocalDate.now();
+		
+		return dataScadenza.isBefore(dataCorrente);
+	}
 
 	@Override
 	public String toString() {
@@ -61,4 +78,17 @@ public class Patente {
 				+ "]";
 	}
 	
+	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException {
+		String[] catPat = {"B"}; 
+		
+		
+		try {
+			Patente p = new Patente("AB123456AB", "19/02/2025", catPat);
+			System.out.println(p.toString());
+		} catch (PatenteScadutaException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("ciao");
+	}
 }
