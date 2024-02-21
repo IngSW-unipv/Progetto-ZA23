@@ -2,6 +2,7 @@ package it.unipv.sfw.rentacar.model.contratti;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.Pagamento;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
@@ -26,7 +27,7 @@ public class ContrattoNoleggio {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.inizioNoleggio = LocalDate.parse(inizioNoleggio, formatter);
 		this.fineNoleggio = LocalDate.parse(fineNoleggio, formatter);
-		this.importo = 0;
+		this.importo = conteggioGiorniNoleggio();
 		incrementaID();
 	}
 	
@@ -38,6 +39,8 @@ public class ContrattoNoleggio {
 		return String.format("Rent-a-Car#%05d", ID);
 	}
 	
-	
+	public int conteggioGiorniNoleggio() {
+		return (int)ChronoUnit.DAYS.between(inizioNoleggio, fineNoleggio);
+	}
 	
 }
