@@ -76,7 +76,10 @@ public class CartaDiCredito extends Pagamento{
 
 	@Override
 	public void effettuaPagamento() {
-		
+		System.out.println("Verifica dei dati immessi");
+		System.out.println("...");
+		System.out.println("...");
+		System.out.println("Pagamento effettuato con successo");
 	}
 
 	@Override
