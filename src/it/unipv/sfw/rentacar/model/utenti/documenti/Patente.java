@@ -68,12 +68,9 @@ public class Patente {
 	}
 	
 	public boolean verificaScadenzaPatente(String scadenza) {
-		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataScadenza = LocalDate.parse(scadenza, formatter);
-		
 		LocalDate dataCorrente = LocalDate.now();
-		
 		return dataScadenza.isAfter(dataCorrente);
 	}
 	
