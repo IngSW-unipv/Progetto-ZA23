@@ -18,6 +18,10 @@ public class Patente {
 	
 	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		
+		if (numero.equals(null) || dataScadenza.equals(null) || categorie.equals(null)) {
+			throw new NullPointerException();
+		}
+		
 		if (!verificaNumeroPatente(numero)) {
 			throw new NumeroPatenteInvalidoException();
 		}
@@ -88,6 +92,6 @@ public class Patente {
 	public String toString() {
 		return "Patente [numero=" + numero + ", scadenza=" + scadenza + ", categorie=" + Arrays.toString(categorie)
 				+ "]";
-	}
+	}	
 	
 }
