@@ -1,13 +1,14 @@
 package it.unipv.sfw.rentacar.model.contratti;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.Pagamento;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
+import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class ContrattoNoleggio {
 
@@ -21,6 +22,11 @@ public class ContrattoNoleggio {
 	private Pagamento pagamento;
 	
 	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, double importo, CartaDiCredito pagamento) {
+		
+		if (!controlloDateNoleggio(inizioNoleggio, fineNoleggio)) {
+			throw new DateTimeException("Date selezionate per il noleggio non valide oppure errate");
+		}
+		
 		this.idContratto = creazioneIDContratto();
 		this.cliente = cliente;
 		this.auto = auto;
@@ -29,7 +35,7 @@ public class ContrattoNoleggio {
 		this.fineNoleggio = LocalDate.parse(fineNoleggio, formatter);
 		this.importo = calcolaNoleggio();
 		this.pagamento = pagamento;
-		
+		this.auto.setStatoNoleggio(Noleggio.NOLEGGIATA);
 		incrementaID();
 	}
 	
@@ -111,6 +117,20 @@ public class ContrattoNoleggio {
 	
 	public double calcolaNoleggio() {
 		return conteggioGiorniNoleggio() * this.auto.getCostoNoleggioGiornaliero();
+	}
+	
+	public boolean controlloDateNoleggio(String inizio, String fine) {
+		
+		LocalDate dataInizio, dataFine;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		dataInizio = LocalDate.parse(inizio, formatter);
+		dataFine = LocalDate.parse(fine, formatter);
+		
+		if ((dataInizio.isAfter(LocalDate.now()) || dataInizio.equals(LocalDate.now())) && dataInizio.isBefore(dataFine)) {
+			return true;
+		}else
+			return false;
 	}
 	
 }
