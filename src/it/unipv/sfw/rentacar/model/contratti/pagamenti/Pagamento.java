@@ -15,7 +15,7 @@ public abstract class Pagamento {
 			throw new IllegalArgumentException("Valore Titolare non valido");
 		}
 		if (causale.length() <= 0) {
-			throw new IllegalArgumentException("Valore Titolare non valido");
+			throw new IllegalArgumentException("Valore Causale non valido");
 		}
 		
 		this.titolare = titolare;
