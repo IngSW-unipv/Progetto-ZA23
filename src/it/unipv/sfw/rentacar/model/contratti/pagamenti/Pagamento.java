@@ -3,7 +3,7 @@ package it.unipv.sfw.rentacar.model.contratti.pagamenti;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public  class Pagamento {
+public abstract class Pagamento {
 
 	private String titolare;
 	private String causale;
@@ -51,8 +51,13 @@ public  class Pagamento {
 		return dataEsecuzione.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	}
 
-	public static void main(String[] args) {
-		Pagamento p = new Pagamento("", "ca");
-		System.out.println(p.dataEsecuzioneFormattata());
+	public abstract void effettuaPagamento();
+
+	@Override
+	public String toString() {
+		return "Pagamento [titolare=" + titolare + ", causale=" + causale + ", data esecuzione="
+				+ dataEsecuzioneFormattata() + "]";
 	}
+	
+
 }
