@@ -11,10 +11,14 @@ public abstract class Pagamento {
 	
 	public Pagamento(String titolare, String causale) {
 		
-		if (titolare.length() <= 0 || titolare.equals(null)) {
+		if (titolare.equals(null) || causale.equals(null)) {
+			throw new NullPointerException();
+		}
+		
+		if (titolare.length() <= 0) {
 			throw new IllegalArgumentException("Il campo Titolare non é valido");
 		}
-		if (causale.length() <= 0 || causale.equals(null)) {
+		if (causale.length() <= 0) {
 			throw new IllegalArgumentException("Il campo Causale non é valido");
 		}
 		
