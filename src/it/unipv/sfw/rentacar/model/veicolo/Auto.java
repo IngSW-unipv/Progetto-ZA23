@@ -17,24 +17,35 @@ public class Auto implements INoleggiabile{
 	private double costoNoleggioGiornaliero;
 	private Noleggio statoNoleggio;
 	
-	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, double costoNoleggioGiornaliero , Noleggio statoNoleggio) throws TargaNonValidaException {
+	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, double costoNoleggioGiornaliero) throws TargaNonValidaException {
+		
+		if (marca.equals(null)) {
+			throw new NullPointerException("Marca  non può essere null");
+		}
+		
+		if (modello.equals(null)) {
+			throw new NullPointerException("Modello non può essere null");
+		}
 		
 		if (!verificaTarga(targa)) {
 			throw new TargaNonValidaException();
 		}
 		
 		if (marca.length() <= 0) {
-			throw new IllegalArgumentException("Il campo marca non può essere vuoto");
+			throw new IllegalArgumentException("Il campo marca non é valido");
 		}
 		
 		if (modello.length() <= 0) {
-			throw new IllegalArgumentException("Il campo modello non può essere vuoto");
+			throw new IllegalArgumentException("Il campo modello non é valido");
+		}
+		
+		if (caratteristicheTecniche.equals(null)) {
+			throw new NullPointerException("CaratteristicheTecniche non può essere null");
 		}
 		
 		if (costoNoleggioGiornaliero <= 0) {
 			throw new IllegalArgumentException("Il campo costoNoleggioGiornaliero non può essere nullo o negativo");
 		}
-		
 		
 		this.targa = targa;
 		this.marca = marca;
