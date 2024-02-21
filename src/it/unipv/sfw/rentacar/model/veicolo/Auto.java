@@ -60,12 +60,16 @@ public class Auto implements INoleggiabile{
 		this.statoNoleggio = statoNoleggio;
 	}
 	
+	public void cambioStatoNoleggio() {
+		if (statoNoleggio.equals(Noleggio.DISPONIBILE)) {
+			this.statoNoleggio = Noleggio.NOLEGGIATA;
+		}else
+			this.statoNoleggio = Noleggio.DISPONIBILE;
+	}
+	
 	@Override
 	public boolean noleggiabile() {
-		if (statoNoleggio.equals(Noleggio.DISPONIBILE)) {
-			return true;
-		}else
-			return false;
+		return (statoNoleggio.equals(Noleggio.DISPONIBILE));
 	}
 
 	@Override
