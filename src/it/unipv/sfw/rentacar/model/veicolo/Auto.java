@@ -10,13 +10,15 @@ public class Auto implements INoleggiabile{
 	private String marca;
 	private String modello;
 	private CaratteristicheTecniche caratteristicheTecniche;
+	private double costoNoleggioGiornaliero;
 	private Noleggio statoNoleggio;
 	
-	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, Noleggio statoNoleggio) {
+	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, double costoNoleggioGiornaliero , Noleggio statoNoleggio) {
 		this.targa = targa;
 		this.marca = marca;
 		this.modello = modello;
 		this.caratteristicheTecniche = caratteristicheTecniche;
+		this.costoNoleggioGiornaliero = costoNoleggioGiornaliero;
 		this.statoNoleggio = statoNoleggio;
 	}
 	
@@ -46,6 +48,14 @@ public class Auto implements INoleggiabile{
 
 	public CaratteristicheTecniche getCaratteristicheTecniche() {
 		return caratteristicheTecniche;
+	}
+	
+	public double getCostoNoleggioGiornaliero() {
+		return costoNoleggioGiornaliero;
+	}
+	
+	public void setCostoNoleggioGiornaliero(double nuovoCostoNoleggioGiornaliero) {
+		this.costoNoleggioGiornaliero = nuovoCostoNoleggioGiornaliero;
 	}
 
 	public void setCaratteristicheTecniche(CaratteristicheTecniche caratteristicheTecniche) {
