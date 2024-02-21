@@ -50,11 +50,11 @@ public class CartaDiCredito extends Pagamento{
 		this.scadenza = scadenza;
 	}
 
-	public int getCvv() {
+	public int getCVV() {
 		return cvv;
 	}
 
-	public void setCvv(int cvv) {
+	public void setCVV(int cvv) {
 		this.cvv = cvv;
 	}
 
