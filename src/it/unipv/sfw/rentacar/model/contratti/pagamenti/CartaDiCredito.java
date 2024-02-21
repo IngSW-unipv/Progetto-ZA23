@@ -33,6 +33,30 @@ public class CartaDiCredito extends Pagamento{
 		this.scadenza = LocalDate.parse(scadenza, formatter);
 		this.cvv = cvv;
 	}
+	
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public LocalDate getScadenza() {
+		return scadenza;
+	}
+
+	public void setScadenza(LocalDate scadenza) {
+		this.scadenza = scadenza;
+	}
+
+	public int getCvv() {
+		return cvv;
+	}
+
+	public void setCvv(int cvv) {
+		this.cvv = cvv;
+	}
 
 	private boolean controlloNumeroCarta(String numero) {
 		String formatoCartaDiCredito = "^(\\d{4}-?){3}\\d{4}$";
@@ -42,17 +66,23 @@ public class CartaDiCredito extends Pagamento{
 		return matcher.matches();
 	}
 
-	@Override
-	public void effettuaPagamento() {
-		
-	}
-
 	public boolean verificaScadenza(String scadenza) {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataScadenza = LocalDate.parse(scadenza, formatter);
 		LocalDate dataCorrente = LocalDate.now();
 		return dataScadenza.isAfter(dataCorrente);
+	}
+
+	@Override
+	public void effettuaPagamento() {
+		
+	}
+
+	@Override
+	public String toString() {
+		return "CartaDiCredito [titolare= "+ super.getTitolare() + ", causale= "+ super.getCausale()+ 
+				", data Esecuzione= "+ super.dataEsecuzioneFormattata()+ ", numero=" + numero + ", scadenza=" + scadenza + ", cvv=" + cvv + "]";
 	}
 	
 }
