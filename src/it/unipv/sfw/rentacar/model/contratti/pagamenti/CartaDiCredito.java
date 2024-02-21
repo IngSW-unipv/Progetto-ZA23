@@ -2,6 +2,8 @@ package it.unipv.sfw.rentacar.model.contratti.pagamenti;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import it.unipv.sfw.rentacar.model.exception.CartaDiCreditoScadutaException;
 
@@ -14,7 +16,9 @@ public class CartaDiCredito extends Pagamento{
 	public CartaDiCredito(String titolare, String causale, String numero, String scadenza, int cvv) throws CartaDiCreditoScadutaException {
 		super(titolare, causale);
 		
-		
+		if (!controlloNumeroCarta(numero)) {
+			throw new IllegalArgumentException("Numero Carta di Credito non valido");
+		}
 		
 		if (!verificaScadenza(scadenza)) {
 			throw new CartaDiCreditoScadutaException();
@@ -30,6 +34,14 @@ public class CartaDiCredito extends Pagamento{
 		this.cvv = cvv;
 	}
 
+	private boolean controlloNumeroCarta(String numero) {
+		String formatoCartaDiCredito = "^(\\d{4}-?){3}\\d{4}$";
+		Pattern pattern = Pattern.compile(formatoCartaDiCredito);
+		Matcher matcher = pattern.matcher(numero);
+		
+		return matcher.matches();
+	}
+
 	@Override
 	public void effettuaPagamento() {
 		
@@ -41,12 +53,6 @@ public class CartaDiCredito extends Pagamento{
 		LocalDate dataScadenza = LocalDate.parse(scadenza, formatter);
 		LocalDate dataCorrente = LocalDate.now();
 		return dataScadenza.isAfter(dataCorrente);
-	}
-
-	public static void main(String[] args) throws CartaDiCreditoScadutaException {
-		
-		Pagamento p = new CartaDiCredito("Roby", "Pito", "234", "12/03/2024", 241);
-		System.out.println("fatto");
 	}
 	
 }
