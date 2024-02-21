@@ -49,6 +49,10 @@ public class Auto implements INoleggiabile{
 	public CaratteristicheTecniche getCaratteristicheTecniche() {
 		return caratteristicheTecniche;
 	}
+
+	public void setCaratteristicheTecniche(CaratteristicheTecniche caratteristicheTecniche) {
+		this.caratteristicheTecniche = caratteristicheTecniche;
+	}
 	
 	public double getCostoNoleggioGiornaliero() {
 		return costoNoleggioGiornaliero;
@@ -56,10 +60,6 @@ public class Auto implements INoleggiabile{
 	
 	public void setCostoNoleggioGiornaliero(double nuovoCostoNoleggioGiornaliero) {
 		this.costoNoleggioGiornaliero = nuovoCostoNoleggioGiornaliero;
-	}
-
-	public void setCaratteristicheTecniche(CaratteristicheTecniche caratteristicheTecniche) {
-		this.caratteristicheTecniche = caratteristicheTecniche;
 	}
 	
 	public Noleggio getStatoNoleggio() {
@@ -87,7 +87,5 @@ public class Auto implements INoleggiabile{
 		return "Auto [targa=" + targa + ", marca=" + marca + ", modello=" + modello + ", caratteristicheTecniche="
 				+ caratteristicheTecniche + ", statoNoleggio=" + statoNoleggio + "]";
 	}
-
-
 	
 }
