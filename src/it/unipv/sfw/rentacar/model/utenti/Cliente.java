@@ -1,6 +1,7 @@
 package it.unipv.sfw.rentacar.model.utenti;
 
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
@@ -23,9 +24,10 @@ public class Cliente extends Utente {
 	}
 	
 	public void noleggiaAuto(AgenziaNoleggioAuto agenzia, Auto a, String inizioNoleggio, String fineNoleggio, CartaDiCredito carta) {
-
 		
-		
+		carta.effettuaPagamento();
+		ContrattoNoleggio contratto = new ContrattoNoleggio(this, a, inizioNoleggio, fineNoleggio, carta);
+		agenzia.aggiungiContratto(contratto);
 	}
 
 	@Override
