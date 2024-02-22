@@ -22,4 +22,5 @@ public class Amministratore extends Utente{
 		return "Amministratore [nome=" + getNome() + ", cognome=" + getCognome() + ", Username="
 				+ getUsername() + ", password()=" + getPassword() + "]";
 	}
+	
 }
