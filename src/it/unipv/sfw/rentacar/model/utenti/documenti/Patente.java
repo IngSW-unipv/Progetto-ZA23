@@ -19,7 +19,7 @@ public class Patente {
 	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		
 		if (numero.equals(null) || dataScadenza.equals(null) || categorie.equals(null)) {
-			throw new NullPointerException();
+			throw new NullPointerException("I valori non possono essere null");
 		}
 		
 		if (!verificaNumeroPatente(numero)) {

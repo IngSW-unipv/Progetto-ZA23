@@ -20,7 +20,7 @@ public class CaratteristicheTecniche {
 		}
 		
 		if (tipoCambio == null || tipoCarburante == null) {
-			throw new NullPointerException("La tipologia di cambio o la tipologia di carburante non può essere null");
+			throw new NullPointerException("La tipologia di cambio e/o la tipologia di carburante non può essere null");
 		}
 
 		if (postiAuto <= 0) {
