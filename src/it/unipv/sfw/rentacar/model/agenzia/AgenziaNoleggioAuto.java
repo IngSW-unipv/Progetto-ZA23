@@ -135,5 +135,11 @@ public class AgenziaNoleggioAuto {
 		}
 		return listaRicerca;
 	}
+
+	@Override
+	public String toString() {
+		return "AgenziaNoleggioAuto [nome=" + nome + ", indirizzo=" + indirizzo + ", elencoAuto=" + elencoAuto
+				+ ", elencoUtenti=" + elencoUtenti + ", contratti=" + contratti + "]";
+	}
 	
 }
