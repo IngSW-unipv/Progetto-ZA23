@@ -1,5 +1,7 @@
 package it.unipv.sfw.rentacar.model.utenti;
 
+import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
@@ -20,7 +22,9 @@ public class Cliente extends Utente {
 		this.patente = patente;
 	}
 	
-	public void noleggiaAuto(Auto a) {
+	public void noleggiaAuto(AgenziaNoleggioAuto agenzia, Auto a, String inizioNoleggio, String fineNoleggio, CartaDiCredito carta) {
+
+		
 		
 	}
 
