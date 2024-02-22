@@ -78,6 +78,24 @@ public class AgenziaNoleggioAuto {
 		this.contratti = contratti;
 	}
 	
+	public void stampaAuto() {
+		for (Auto a : elencoAuto) {
+			System.out.println(a.toString());
+		}
+	}
+	
+	public void stampaUtenti() {
+		for (Utente u : elencoUtenti) {
+			System.out.println(u.toString());
+		}
+	}
+	
+	public void stampaContratti() {
+		for (ContrattoNoleggio c : contratti) {
+			System.out.println(c.toString());
+		}
+	}
+	
 	public void controlliGenerali(String nome, String indirizzo) {
 		
 		if (nome == null || indirizzo == null) {
