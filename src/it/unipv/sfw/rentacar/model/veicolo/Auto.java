@@ -1,5 +1,6 @@
 package it.unipv.sfw.rentacar.model.veicolo;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -111,7 +112,7 @@ public class Auto implements INoleggiabile{
 	}
 	
 	public boolean verificaTarga(String targa) {
-		String formatoTarga = "[A-HJ-NP-TV-Z]{2}[0-9]{3}[A-HJ-NP-TV-Z]{2}[0-9]{2}";
+		String formatoTarga = "[A-HJ-NP-TV-Z]{2}[0-9]{3}[A-HJ-NP-TV-Z]{2}";
 		Pattern pattern = Pattern.compile(formatoTarga);
 		Matcher matcher = pattern.matcher(targa);
 		
@@ -125,8 +126,9 @@ public class Auto implements INoleggiabile{
 
 	@Override
 	public String toString() {
-		return "Auto [targa=" + targa + ", marca=" + marca + ", modello=" + modello + ", caratteristicheTecniche="
-				+ caratteristicheTecniche + ", statoNoleggio=" + statoNoleggio + "]";
+		return "Auto [targa=" + targa + ", marca=" + marca + ", modello=" + modello + ", anno produzione="
+				+ caratteristicheTecniche.getAnnoProduzione() + ", tipo cambio= " + caratteristicheTecniche.getTipoCambio() + 
+				", tipo carburante=" + Arrays.toString(caratteristicheTecniche.getTipoCarburante()) + ", posti auto="+ caratteristicheTecniche.getPostiAuto() + ", cilindrata= "+ caratteristicheTecniche.getCilindrata() +", potenza = "+ caratteristicheTecniche.getPotenza() +", statoNoleggio=" + statoNoleggio + "]";
 	}
 	
 }

@@ -27,7 +27,7 @@ public class Cliente extends Utente {
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + getNome() + ", cognome=" + getCognome()
-				+ ", username=" + getUsername() + ", password()=" + getPassword() + "patente=" + patente + " ]";
+				+ ", username=" + getUsername() + ", password=" + getPassword() + ", numero patente=" + patente.getNumero() + "]";
 	}
 	
 	

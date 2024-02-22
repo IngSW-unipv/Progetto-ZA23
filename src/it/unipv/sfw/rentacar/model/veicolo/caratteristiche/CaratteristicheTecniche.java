@@ -2,6 +2,7 @@ package it.unipv.sfw.rentacar.model.veicolo.caratteristiche;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class CaratteristicheTecniche {
 
@@ -62,7 +63,7 @@ public class CaratteristicheTecniche {
 	public Carburante[] getTipoCarburante() {
 		return tipoCarburante;
 	}
-
+	
 	public void setTipoCarburante(Carburante[] tipoCarburante) {
 		this.tipoCarburante = tipoCarburante;
 	}
