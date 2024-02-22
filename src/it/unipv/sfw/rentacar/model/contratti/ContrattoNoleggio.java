@@ -24,7 +24,7 @@ public class ContrattoNoleggio {
 
 	private static int ID = 0;
 	private String idContratto;
-	private Cliente cliente;
+	private Utente cliente;
 	private Auto auto;
 	private LocalDate inizioNoleggio;
 	private LocalDate fineNoleggio;
@@ -32,6 +32,14 @@ public class ContrattoNoleggio {
 	private Pagamento pagamento;
 	
 	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, Pagamento pagamento) {
+		
+	    if (cliente == null || auto == null || pagamento == null) {
+	        throw new IllegalArgumentException("Parametri non possono essere nulli");
+	    }
+
+	    if (auto.getStatoNoleggio() != Noleggio.DISPONIBILE) {
+	        throw new IllegalStateException("L'auto non è disponibile per il noleggio.");
+	    }
 		
 		if (!controlloDateNoleggio(inizioNoleggio, fineNoleggio)) {
 			throw new DateTimeException("Date selezionate per il noleggio non valide oppure errate");
