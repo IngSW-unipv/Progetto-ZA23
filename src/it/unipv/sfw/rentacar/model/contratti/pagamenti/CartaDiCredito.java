@@ -45,6 +45,10 @@ public class CartaDiCredito extends Pagamento{
 	public LocalDate getScadenza() {
 		return scadenza;
 	}
+	
+	public String dataScadenzaFormattata() {
+		return scadenza.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+	}
 
 	public void setScadenza(LocalDate scadenza) {
 		this.scadenza = scadenza;
@@ -85,7 +89,7 @@ public class CartaDiCredito extends Pagamento{
 	@Override
 	public String toString() {
 		return "CartaDiCredito [titolare= "+ super.getTitolare() + ", causale= "+ super.getCausale()+ 
-				", data Esecuzione= "+ super.dataEsecuzioneFormattata()+ ", numero=" + numero + ", scadenza=" + scadenza + ", cvv=" + cvv + "]";
+				", data Esecuzione= "+ super.dataEsecuzioneFormattata()+ ", numero=" + numero + ", scadenza=" + dataScadenzaFormattata() + ", cvv=" + cvv + "]";
 	}
 	
 }
