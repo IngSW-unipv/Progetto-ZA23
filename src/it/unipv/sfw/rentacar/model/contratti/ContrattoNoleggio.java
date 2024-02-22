@@ -6,8 +6,18 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.Pagamento;
+import it.unipv.sfw.rentacar.model.exception.CartaDiCreditoScadutaException;
+import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
+import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
+import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
+import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
+import it.unipv.sfw.rentacar.model.utenti.Utente;
+import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Cambio;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecniche;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class ContrattoNoleggio {
@@ -21,7 +31,7 @@ public class ContrattoNoleggio {
 	private double importo;
 	private Pagamento pagamento;
 	
-	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, double importo, CartaDiCredito pagamento) {
+	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, Pagamento pagamento) {
 		
 		if (!controlloDateNoleggio(inizioNoleggio, fineNoleggio)) {
 			throw new DateTimeException("Date selezionate per il noleggio non valide oppure errate");
@@ -55,7 +65,7 @@ public class ContrattoNoleggio {
 		this.idContratto = idContratto;
 	}
 
-	public Cliente getCliente() {
+	public Utente getCliente() {
 		return cliente;
 	}
 
@@ -131,6 +141,13 @@ public class ContrattoNoleggio {
 			return true;
 		}else
 			return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "ContrattoNoleggio [idContratto=" + idContratto + ", cliente=" + cliente + ", auto=" + auto
+				+ ", inizioNoleggio=" + inizioNoleggio + ", fineNoleggio=" + fineNoleggio + ", importo=" + importo
+				+ ", pagamento=" + pagamento + "]";
 	}
 	
 }
