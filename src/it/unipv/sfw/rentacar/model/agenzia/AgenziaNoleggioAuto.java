@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
+import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
@@ -90,10 +91,18 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
+	public void aggiungiCliente(Cliente c) {
+		this.elencoUtenti.add(c);
+	}
+	
 	public void stampaContratti() {
 		for (ContrattoNoleggio c : contratti) {
 			System.out.println(c.toString());
 		}
+	}
+	
+	public void aggiungiContratto(ContrattoNoleggio c) {
+		this.contratti.add(c);
 	}
 	
 	public void controlliGenerali(String nome, String indirizzo) {
