@@ -53,7 +53,7 @@ public class Patente {
 		return scadenza;
 	}
 	
-	public void rinnova(LocalDate rinnovo) {
+	public void setScadenza(LocalDate rinnovo) {
 		this.scadenza = rinnovo;
 	}
 	

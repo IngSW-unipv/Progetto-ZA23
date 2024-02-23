@@ -9,7 +9,7 @@ import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class AgenziaNoleggioAuto {
-
+	
 	private String nome;
 	private String indirizzo;
 	private List<Auto> elencoAuto;
@@ -91,7 +91,7 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
-	public void aggiungiCliente(Cliente c) {
+	public void aggiungiUtente(Cliente c) {
 		this.elencoUtenti.add(c);
 	}
 	
