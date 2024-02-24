@@ -62,5 +62,35 @@ public class CustomFrame extends JFrame{
         
         setVisible(true);
     }
+
+
+	public File getIconFile() {
+		return iconFile;
+	}
+
+
+	public void setIconFile(File iconFile) {
+		this.iconFile = iconFile;
+	}
+
+
+	public TitlePanel getTitlePanel() {
+		return titlePanel;
+	}
+
+
+	public void setTitlePanel(TitlePanel titlePanel) {
+		this.titlePanel = titlePanel;
+	}
+
+
+	public SideBarPanel getSideBarPanel() {
+		return sideBarPanel;
+	}
+
+
+	public void setSideBarPanel(SideBarPanel sideBarPanel) {
+		this.sideBarPanel = sideBarPanel;
+	}
 	
 }
