@@ -31,5 +31,30 @@ public class TitlePanel extends JPanel{
         add(titleLabel, BorderLayout.CENTER);
         
 	}
+
+	public ImageIcon getImageIcon() {
+		return imageIcon;
+	}
+
+	public void setImageIcon(ImageIcon imageIcon) {
+		this.imageIcon = imageIcon;
+	}
+
+	public JLabel getImageLabel() {
+		return imageLabel;
+	}
+
+	public void setImageLabel(JLabel imageLabel) {
+		this.imageLabel = imageLabel;
+	}
+
+	public JLabel getTitleLabel() {
+		return titleLabel;
+	}
+
+	public void setTitleLabel(JLabel titleLabel) {
+		this.titleLabel = titleLabel;
+	}
+	
 	
 }
