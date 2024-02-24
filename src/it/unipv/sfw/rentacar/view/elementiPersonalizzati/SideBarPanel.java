@@ -25,5 +25,22 @@ public class SideBarPanel extends JPanel{
         
 	}
 
+	public JLabel getNoleggioLabel() {
+		return noleggioLabel;
+	}
+
+	public void setNoleggioLabel(JLabel noleggioLabel) {
+		this.noleggioLabel = noleggioLabel;
+	}
+
+	public JButton getNoleggioButton() {
+		return noleggioButton;
+	}
+
+	public void setNoleggioButton(JButton noleggioButton) {
+		this.noleggioButton = noleggioButton;
+	}
+	
+	
 	
 }
