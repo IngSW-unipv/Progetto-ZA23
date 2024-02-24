@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class TitlePanel extends JPanel{
 		super();
 		
 		setLayout(new BorderLayout());
-		setBackground(Color.CYAN);
+		setBackground(new Color(173, 233, 255));
 		
         imageIcon = new ImageIcon("src\\it\\unipv\\sfw\\rentacar\\resources\\logo_trasparente2.png");
         imageLabel = new JLabel(imageIcon);
@@ -27,7 +28,7 @@ public class TitlePanel extends JPanel{
         
         titleLabel = new JLabel("Rent-a-Car");
         titleLabel.setFont(new Font("Brush Script MT", Font.BOLD, 50));
-        titleLabel.setForeground(Color.BLUE);
+        titleLabel.setForeground(new Color(130, 50, 150));
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         add(titleLabel, BorderLayout.CENTER);
         
