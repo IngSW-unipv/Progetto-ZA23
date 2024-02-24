@@ -16,6 +16,7 @@ public class TitlePanel extends JPanel{
 	private JLabel titleLabel;
 	
 	public TitlePanel() throws IOException {
+		super();
 		
 		setLayout(new BorderLayout());
 		setBackground(Color.CYAN);
