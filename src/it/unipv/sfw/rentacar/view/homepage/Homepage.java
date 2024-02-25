@@ -56,7 +56,7 @@ public class Homepage {
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.gridwidth = 3;
-		gbc.insets = new Insets(50, 0, 0, 0);
+		gbc.insets = new Insets(40, 0, 0, 0);
 		frame.getMainPanel().add(subTitle, gbc);
 		
 		description = new JLabel("Il nostro catalogo contiene auto di ogni genere");
@@ -223,5 +223,8 @@ public class Homepage {
 
 	public void setArrowLabel(JLabel arrowLabel) {
 		this.arrowLabel = arrowLabel;
+	}
+	public static void main(String[] args) throws IOException {
+		Homepage home = new Homepage();
 	}
 }
