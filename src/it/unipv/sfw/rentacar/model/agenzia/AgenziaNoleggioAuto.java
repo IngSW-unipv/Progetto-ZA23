@@ -91,7 +91,7 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
-	public void aggiungiUtente(Cliente c) {
+	public void aggiungiUtente(Utente c) {
 		this.elencoUtenti.add(c);
 	}
 	
