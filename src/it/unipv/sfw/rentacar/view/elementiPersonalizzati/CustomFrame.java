@@ -31,7 +31,7 @@ public class CustomFrame extends JFrame{
 	private File iconFile;
 	private TitlePanel titlePanel;
 	private SideBarPanel sideBarPanel;
-	
+	private JPanel mainPanel;
 	
 	public CustomFrame() throws IOException {
 		
@@ -58,37 +58,42 @@ public class CustomFrame extends JFrame{
         sideBarPanel = new SideBarPanel();
         add(sideBarPanel, BorderLayout.WEST);
         
+        mainPanel = new JPanel();
+        add(mainPanel, BorderLayout.CENTER);
+        
         setVisible(true);
     }
-
 
 	public File getIconFile() {
 		return iconFile;
 	}
 
-
 	public void setIconFile(File iconFile) {
 		this.iconFile = iconFile;
 	}
-
 
 	public TitlePanel getTitlePanel() {
 		return titlePanel;
 	}
 
-
 	public void setTitlePanel(TitlePanel titlePanel) {
 		this.titlePanel = titlePanel;
 	}
-
 
 	public SideBarPanel getSideBarPanel() {
 		return sideBarPanel;
 	}
 
-
 	public void setSideBarPanel(SideBarPanel sideBarPanel) {
 		this.sideBarPanel = sideBarPanel;
 	}
+
+	public JPanel getMainPanel() {
+		return mainPanel;
+	}
 	
+	public void setMainPanel(JPanel mainPanel) {
+		this.mainPanel = mainPanel;
+	}
+
 }
