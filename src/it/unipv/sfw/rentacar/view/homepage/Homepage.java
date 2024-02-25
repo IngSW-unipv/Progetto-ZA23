@@ -35,7 +35,6 @@ public class Homepage {
 	public Homepage() throws IOException {
 		frame = new CustomFrame();
 		
-		frame.getMainPanel().setBackground(new Color(168, 255, 184));
 		GridBagConstraints gbc = new GridBagConstraints();
 		frame.getMainPanel().setLayout(new GridBagLayout());
 		
