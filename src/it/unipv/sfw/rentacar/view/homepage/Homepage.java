@@ -113,8 +113,116 @@ public class Homepage {
 		frame.setVisible(true);
 
 	}
-	
-	public static void main(String[] args) throws IOException {
-		Homepage home = new Homepage();
+
+	public CustomFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(CustomFrame frame) {
+		this.frame = frame;
+	}
+
+	public ImageIcon getImageIcon() {
+		return imageIcon;
+	}
+
+	public void setImageIcon(ImageIcon imageIcon) {
+		this.imageIcon = imageIcon;
+	}
+
+	public ImageIcon getImgAuto1() {
+		return imgAuto1;
+	}
+
+	public void setImgAuto1(ImageIcon imgAuto1) {
+		this.imgAuto1 = imgAuto1;
+	}
+
+	public ImageIcon getImgAuto2() {
+		return imgAuto2;
+	}
+
+	public void setImgAuto2(ImageIcon imgAuto2) {
+		this.imgAuto2 = imgAuto2;
+	}
+
+	public ImageIcon getArrow() {
+		return arrow;
+	}
+
+	public void setArrow(ImageIcon arrow) {
+		this.arrow = arrow;
+	}
+
+	public JLabel getTitle() {
+		return title;
+	}
+
+	public void setTitle(JLabel title) {
+		this.title = title;
+	}
+
+	public JLabel getSubTitle() {
+		return subTitle;
+	}
+
+	public void setSubTitle(JLabel subTitle) {
+		this.subTitle = subTitle;
+	}
+
+	public JLabel getDescription() {
+		return description;
+	}
+
+	public void setDescription(JLabel description) {
+		this.description = description;
+	}
+
+	public JLabel getImageLabel() {
+		return imageLabel;
+	}
+
+	public void setImageLabel(JLabel imageLabel) {
+		this.imageLabel = imageLabel;
+	}
+
+	public JLabel getLabelAuto1() {
+		return labelAuto1;
+	}
+
+	public void setLabelAuto1(JLabel labelAuto1) {
+		this.labelAuto1 = labelAuto1;
+	}
+
+	public JLabel getImgAuto1Descr() {
+		return imgAuto1Descr;
+	}
+
+	public void setImgAuto1Descr(JLabel imgAuto1Descr) {
+		this.imgAuto1Descr = imgAuto1Descr;
+	}
+
+	public JLabel getLabelAuto2() {
+		return labelAuto2;
+	}
+
+	public void setLabelAuto2(JLabel labelAuto2) {
+		this.labelAuto2 = labelAuto2;
+	}
+
+	public JLabel getImgAuto2Descr() {
+		return imgAuto2Descr;
+	}
+
+	public void setImgAuto2Descr(JLabel imgAuto2Descr) {
+		this.imgAuto2Descr = imgAuto2Descr;
+	}
+
+	public JLabel getArrowLabel() {
+		return arrowLabel;
+	}
+
+	public void setArrowLabel(JLabel arrowLabel) {
+		this.arrowLabel = arrowLabel;
 	}
 }
