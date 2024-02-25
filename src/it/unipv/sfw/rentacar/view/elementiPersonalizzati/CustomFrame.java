@@ -59,6 +59,7 @@ public class CustomFrame extends JFrame{
         add(sideBarPanel, BorderLayout.WEST);
         
         mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(168, 255, 184));
         add(mainPanel, BorderLayout.CENTER);
         
         setVisible(true);
