@@ -58,8 +58,6 @@ public class CustomFrame extends JFrame{
         sideBarPanel = new SideBarPanel();
         add(sideBarPanel, BorderLayout.WEST);
         
-        getContentPane().setBackground(Color.WHITE);
-        
         setVisible(true);
     }
 
