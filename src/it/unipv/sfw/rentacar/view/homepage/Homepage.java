@@ -1,7 +1,6 @@
 package it.unipv.sfw.rentacar.view.homepage;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,8 +9,6 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
