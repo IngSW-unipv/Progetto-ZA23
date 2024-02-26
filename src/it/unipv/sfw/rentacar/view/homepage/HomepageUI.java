@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
-public class Homepage {
+public class HomepageUI {
 
 	private CustomFrame frame;
 	private ImageIcon imageIcon;
@@ -29,7 +29,7 @@ public class Homepage {
 	private JLabel imgAuto2Descr;
 	private JLabel arrowLabel;
 	
-	public Homepage() throws IOException {
+	public HomepageUI() throws IOException {
 		frame = new CustomFrame();
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -222,6 +222,6 @@ public class Homepage {
 		this.arrowLabel = arrowLabel;
 	}
 	public static void main(String[] args) throws IOException {
-		Homepage home = new Homepage();
+		HomepageUI home = new HomepageUI();
 	}
 }
