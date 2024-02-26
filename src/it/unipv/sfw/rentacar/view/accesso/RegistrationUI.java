@@ -6,15 +6,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
-import javax.swing.JSpinner.DateEditor;
-
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JTextField;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
