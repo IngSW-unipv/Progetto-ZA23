@@ -37,6 +37,7 @@ import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class CatalogoAutoUI {
 
+	private JPanel ricercaPanel;
     private JTextField ricercaMarca;
     private JTextField ricercaModello;
     private JLabel marcaLabel;
@@ -56,14 +57,14 @@ public class CatalogoAutoUI {
 		}
 		
 		GridBagConstraints gbc = new GridBagConstraints();
-        JPanel ricercaPanel = new JPanel();
+        ricercaPanel = new JPanel();
         ricercaPanel.setBackground(new Color(145, 255, 229));
         ricercaPanel.setLayout(new GridBagLayout());
         ricercaMarca = new JTextField(10);
         JLabel marcaLabel = new JLabel("Marca : ");
         ricercaModello = new JTextField(10);
         JLabel modelloLabel = new JLabel("Modello : ");
-        JButton cercaButton = new JButton("Cerca");
+        cercaButton = new JButton("Cerca");
         
         ricercaPanel.add(marcaLabel);
         gbc.gridx = 0;
@@ -195,6 +196,14 @@ public class CatalogoAutoUI {
 
 	public void setCercaButton(JButton cercaButton) {
 		this.cercaButton = cercaButton;
+	}
+
+	public JPanel getRicercaPanel() {
+		return ricercaPanel;
+	}
+
+	public void setRicercaPanel(JPanel ricercaPanel) {
+		this.ricercaPanel = ricercaPanel;
 	}
 
 }
