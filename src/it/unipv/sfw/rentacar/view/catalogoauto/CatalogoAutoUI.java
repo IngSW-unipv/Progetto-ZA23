@@ -58,7 +58,7 @@ public class CatalogoAutoUI {
 		
 		GridBagConstraints gbc = new GridBagConstraints();
         ricercaPanel = new JPanel();
-        ricercaPanel.setBackground(new Color(145, 255, 229));
+        ricercaPanel.setBackground(new Color(173, 233, 255));
         ricercaPanel.setLayout(new GridBagLayout());
         ricercaMarca = new JTextField(10);
         JLabel marcaLabel = new JLabel("Marca : ");
