@@ -45,20 +45,20 @@ public class RegistrationUI {
 		gbc.insets = new Insets(5, 5, 5, 5);
 		
 		registrationLabel = new JLabel("Registrazione");
-		registrationLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		registrationLabel.setFont(new Font("Arial", Font.PLAIN, 50));
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridwidth = 2;
 		frame.getMainPanel().add(registrationLabel, gbc);
 		
 		datiLabel = new JLabel("Dati Anagrafici");
-		datiLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		datiLabel.setFont(new Font("Arial", Font.PLAIN, 30));
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		frame.getMainPanel().add(datiLabel, gbc);
 		
 		nomeLabel = new JLabel("Nome : ");
-		nomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		nomeLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridwidth = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -70,7 +70,7 @@ public class RegistrationUI {
 		frame.getMainPanel().add(nome, gbc);
 
 		cognomeLabel = new JLabel("Cognome : ");
-		cognomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		cognomeLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		frame.getMainPanel().add(cognomeLabel, gbc);
@@ -81,7 +81,7 @@ public class RegistrationUI {
 		frame.getMainPanel().add(cognome, gbc);
 		
 		usernameLabel = new JLabel("Username : ");
-		usernameLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		usernameLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridx = 0;
 		gbc.gridy = 4;
 		frame.getMainPanel().add(usernameLabel, gbc);
@@ -92,7 +92,7 @@ public class RegistrationUI {
 		frame.getMainPanel().add(username, gbc);
 		
 		passwordLabel = new JLabel("Password : ");
-		passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		passwordLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		frame.getMainPanel().add(passwordLabel, gbc);
@@ -103,14 +103,14 @@ public class RegistrationUI {
 		frame.getMainPanel().add(password, gbc);
 		
 		datiPatenteLabel = new JLabel("Dati Patente");
-		datiPatenteLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		datiPatenteLabel.setFont(new Font("Arial", Font.PLAIN, 30));
 		gbc.gridx = 0;
 		gbc.gridy = 6;
 		gbc.gridwidth = 2;
 		frame.getMainPanel().add(datiPatenteLabel, gbc);
 		
 		numeroPatenteLabel = new JLabel("Numero Patente : ");
-		numeroPatenteLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		numeroPatenteLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridwidth = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 7;
@@ -122,7 +122,7 @@ public class RegistrationUI {
 		frame.getMainPanel().add(numeroPatente, gbc);
 
 		scadenzaLabel = new JLabel("Scadenza Patente : ");
-		scadenzaLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		scadenzaLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridx = 0;
 		gbc.gridy = 8;
 		frame.getMainPanel().add(scadenzaLabel, gbc);
@@ -135,7 +135,7 @@ public class RegistrationUI {
 		frame.getMainPanel().add(scadenzaPatente, gbc);
 		
 		categorieLabel = new JLabel("Categorie Patente : ");
-		categorieLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		categorieLabel.setFont(new Font("Arial", Font.PLAIN, 15));
 		gbc.gridwidth = 1;
 		gbc.gridx = 0;
 		gbc.gridy = 9;
@@ -143,7 +143,7 @@ public class RegistrationUI {
 		
 		categoriePatenteA = new JCheckBox("A");
 		categoriePatenteB = new JCheckBox("B");
-		categoriePatenteC = new JCheckBox("B");
+		categoriePatenteC = new JCheckBox("C");
 		gbc.gridx = 1;
 		gbc.gridy = 9;
 		frame.getMainPanel().add(categoriePatenteA, gbc);
@@ -323,5 +323,4 @@ public class RegistrationUI {
 	public void setRegistrazioneButton(JButton registrazioneButton) {
 		this.registrazioneButton = registrazioneButton;
 	}
-
 }
