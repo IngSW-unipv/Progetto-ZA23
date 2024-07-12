@@ -47,7 +47,7 @@ public class AutoDAO {
 	        stmt.executeUpdate();
 	    } catch (SQLException e) {
 			if(e.getErrorCode() == 1062) {
-				System.out.println("Targa duplicata: " + a.getTarga());
+				System.out.println("Targa duplicata: " + a.getTarga() + " -> Impossibile aggiungere");
 			} else {
 				throw e;
             }
@@ -92,11 +92,14 @@ public class AutoDAO {
 		CaratteristicheTecniche ct1 = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante, 5, 150, 200);
 		Auto a1 = new Auto("AB456CD", "Fiat", "Panda", ct1, 5);
 		Auto a2 = new Auto("CD456AS", "Ford", "Fiesta", ct1, 7.5);
+		Auto a3 = new Auto("CD456AS", "Ford", "Fiesta", ct1, 7.5);
 		AutoDAO dao = new AutoDAO();
 		dao.creaAuto(a1);
 		dao.creaAuto(a2);
+		dao.creaAuto(a3);
 		amm.aggiungiAuto(agenzia, a1);
 		amm.aggiungiAuto(agenzia, a2);
+		amm.aggiungiAuto(agenzia, a3);
 		System.out.println("Siamo qua");
 	}
 	
