@@ -48,11 +48,12 @@ public class UtenteDAO {
 		String query = "INSERT INTO utente (username, password, nome, cognome, ruolo) VALUES (?, ?, ?, ?, ?)";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			stmt.setString(1, a.getNome());
-			stmt.setString(2, a.getCognome());
-			stmt.setString(3, a.getUsername());
-			stmt.setString(4, a.getPassword());
+			stmt.setString(1, a.getUsername());
+			stmt.setString(2, a.getPassword());
+			stmt.setString(3, a.getNome());
+			stmt.setString(4, a.getCognome());
 			stmt.setString(5, "AMMINISTRATORE");
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			if(e.getErrorCode() == 1062) {
 				System.out.println("Username gia in uso: " + a.getUsername() + " -> Impossibile aggiungere");
@@ -61,5 +62,28 @@ public class UtenteDAO {
             }
 		}
 	}
+	
+	public void cancellaCliente(Cliente c) throws SQLException {
+		String query = "DELETE FROM utente WHERE username = ? AND nome = ? AND cognome = ?";
+		try (Connection connection = DatabaseConnection.connessione();
+	            PreparedStatement stmt = connection.prepareStatement(query)) {
+			stmt.setString(1, c.getUsername());
+			stmt.setString(2, c.getNome());
+			stmt.setString(2, c.getCognome());
+			stmt.executeUpdate();
+		}
+	}
+	/*
+	public void aggiornaPassword(Cliente c) throws SQLException {
+		String query = "UPDATE utente SET password = ? WHERE username = ?";
+		try (Connection connection = DatabaseConnection.connessione();
+	            PreparedStatement stmt = connection.prepareStatement(query)) {
+			stmt.setString(1, c.());
+			stmt.setString(2, c.getNome());
+			stmt.setString(2, c.getCognome());
+			stmt.executeUpdate();
+		}
+	}*/
+
 	
 }
