@@ -39,8 +39,8 @@ public class AutoDAO {
 	        stmt.setString(8, a.getCaratteristicheTecniche().getTipoCarburante()[0].name());
 	        if (a.getCaratteristicheTecniche().getTipoCarburante().length > 1 && a.getCaratteristicheTecniche().getTipoCarburante()[1] != null) {
 	        	stmt.setString(9, a.getCaratteristicheTecniche().getTipoCarburante()[1].name());	
-			}
-	        stmt.setString(9, null);
+			}else
+				stmt.setString(9, null);
 	        stmt.setInt(10, a.getCaratteristicheTecniche().getPostiAuto());
 	        stmt.setInt(11, a.getCaratteristicheTecniche().getCilindrata());
 	        stmt.setInt(12, a.getCaratteristicheTecniche().getPotenza());
