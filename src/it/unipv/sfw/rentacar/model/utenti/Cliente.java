@@ -24,7 +24,6 @@ public class Cliente extends Utente {
 	}
 	
 	public void noleggiaAuto(AgenziaNoleggioAuto agenzia, Auto a, String inizioNoleggio, String fineNoleggio, CartaDiCredito carta) {
-		
 		carta.effettuaPagamento();
 		ContrattoNoleggio contratto = new ContrattoNoleggio(this, a, inizioNoleggio, fineNoleggio, carta);
 		agenzia.aggiungiContratto(contratto);
