@@ -55,13 +55,14 @@ public class AutoDAO {
 		
 	}
 	
-	public void eliminaAuto(String targa) {
+	public void eliminaAuto(Auto a) {
 		String query = "DELETE FROM auto WHERE targa = ?";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			stmt.setString(1, targa);
+			stmt.setString(1, a.getTarga());
+			stmt.executeUpdate();
 		} catch (SQLException e) {
-			System.err.println("Errore nell'eliminazione dell'auto targata " + targa);
+			System.err.println("Errore nell'eliminazione dell'auto targata " + a.getTarga());
 		}
 	}
 	
@@ -69,17 +70,20 @@ public class AutoDAO {
 		String query = "UPDATE auto SET stato_noleggio = ? WHERE targa = ?; ";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			if (a.getStatoNoleggio().equals(Noleggio.NOLEGGIATA)) {
+			if (a.getStatoNoleggio() == Noleggio.NOLEGGIATA) {
 				stmt.setString(1, Noleggio.DISPONIBILE.name());
-			}else 
+				stmt.setString(2, a.getTarga());
+				stmt.executeUpdate();
+			}else {
 				stmt.setString(1, Noleggio.NOLEGGIATA.name());
-			stmt.setString(2, a.getTarga());
-			stmt.executeUpdate();
+				stmt.setString(2, a.getTarga());
+				stmt.executeUpdate();
+			}
 		} catch (SQLException e) {
 			System.err.println("Errore fase di update");
 		}
 	}
-	
+	/*
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, SQLException {
 		String[] cat = {"B"};
 		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
@@ -92,7 +96,7 @@ public class AutoDAO {
 		CaratteristicheTecniche ct1 = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante, 5, 150, 200);
 		Auto a1 = new Auto("AB456CD", "Fiat", "Panda", ct1, 5);
 		Auto a2 = new Auto("CD456AS", "Ford", "Fiesta", ct1, 7.5);
-		Auto a3 = new Auto("CD456AS", "Ford", "Fiesta", ct1, 7.5);
+		Auto a3 = new Auto("EF456AS", "Ford", "Fiesta", ct1, 7.5);
 		AutoDAO dao = new AutoDAO();
 		dao.creaAuto(a1);
 		dao.creaAuto(a2);
@@ -100,7 +104,15 @@ public class AutoDAO {
 		amm.aggiungiAuto(agenzia, a1);
 		amm.aggiungiAuto(agenzia, a2);
 		amm.aggiungiAuto(agenzia, a3);
-		System.out.println("Siamo qua");
+		dao.eliminaAuto(a3);
+		amm.rimuoviAuto(agenzia, a3);
+		agenzia.stampaAuto();
+		dao.aggiornaStatoNoleggio(a1);
+		amm.aggiornaStatoAuto(agenzia, a1);
+		dao.aggiornaStatoNoleggio(a2);
+		amm.aggiornaStatoAuto(agenzia, a2);
+		dao.aggiornaStatoNoleggio(a1);
+		amm.aggiornaStatoAuto(agenzia, a1);
 	}
-	
+	*/
 }
