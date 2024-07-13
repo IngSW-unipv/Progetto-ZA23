@@ -15,7 +15,7 @@ public class ContrattoNoleggio {
 
 	private static int ID = 0;
 	private String idContratto;
-	private Utente cliente;
+	private Cliente cliente;
 	private Auto auto;
 	private LocalDate inizioNoleggio;
 	private LocalDate fineNoleggio;
@@ -64,7 +64,7 @@ public class ContrattoNoleggio {
 		this.idContratto = idContratto;
 	}
 
-	public Utente getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
