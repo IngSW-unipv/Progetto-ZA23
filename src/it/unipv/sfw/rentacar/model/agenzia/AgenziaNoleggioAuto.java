@@ -116,6 +116,16 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
+	public Auto cercaAutoPerTarga(String targa){
+		Auto a = null;
+		for (Auto auto : elencoAuto) {
+			if (auto.getTarga().equals(targa)) {
+				a = auto;
+			}
+		}
+		return a;
+	}
+	
 	public ArrayList<Auto> cercaAutoPerMarca(String marca){
 		ArrayList<Auto> listaRicerca = new ArrayList<>();
 		for (Auto auto : elencoAuto) {
