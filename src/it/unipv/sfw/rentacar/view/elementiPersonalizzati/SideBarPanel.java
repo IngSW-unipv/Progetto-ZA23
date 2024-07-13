@@ -56,6 +56,7 @@ public class SideBarPanel extends JPanel{
         add(autoButton);
         add(areaPersonaleButton);
         
+        areaPersonaleButton.setVisible(false);
         autoButton.setVisible(false);
 	}
 
