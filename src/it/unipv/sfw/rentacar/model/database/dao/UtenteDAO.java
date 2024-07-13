@@ -69,21 +69,23 @@ public class UtenteDAO {
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setString(1, c.getUsername());
 			stmt.setString(2, c.getNome());
-			stmt.setString(2, c.getCognome());
+			stmt.setString(3, c.getCognome());
 			stmt.executeUpdate();
+		} catch (Exception e) {
+			System.err.println("Errore nella cancellazione di un cliente");
 		}
 	}
-	/*
-	public void aggiornaPassword(Cliente c) throws SQLException {
+	
+	public void aggiornaPasswordCliente(Cliente c, String nuovaPassword) throws SQLException {
 		String query = "UPDATE utente SET password = ? WHERE username = ?";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			stmt.setString(1, c.());
-			stmt.setString(2, c.getNome());
-			stmt.setString(2, c.getCognome());
+			stmt.setString(1, nuovaPassword);
+			stmt.setString(2, c.getUsername());
 			stmt.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println("Errore nell'aggiornamento della Password");
 		}
-	}*/
-
-	
+		
+	}	
 }
