@@ -15,9 +15,12 @@ public class SideBarPanel extends JPanel{
 
 	private JLabel homeLabel;
 	private JLabel noleggioLabel;
+	private JLabel autoLabel;
+	private JLabel areaPersonaleLabel;
 	private JButton homeButton;
 	private JButton noleggioButton;
-	
+	private JButton autoButton;
+	private JButton areaPersonaleButton;
 	
 	public SideBarPanel() {
 		super();
@@ -31,16 +34,29 @@ public class SideBarPanel extends JPanel{
 		homeButton = new JButton();
 		homeButton.add(homeLabel);
 		setLabelDimension(homeButton);
-        noleggioLabel = new JLabel("Noleggio");
+        
+		noleggioLabel = new JLabel("Catalogo");
         noleggioButton = new JButton();
         noleggioButton.add(noleggioLabel);
         setLabelDimension(noleggioButton);
         
+        autoLabel = new JLabel("Auto");
+        autoButton = new JButton();
+        autoButton.add(autoLabel);
+        setLabelDimension(autoButton);
+        
+        areaPersonaleLabel = new JLabel("Area Personale");
+        areaPersonaleButton = new JButton();
+        areaPersonaleButton.add(areaPersonaleLabel);
+        setLabelDimension(areaPersonaleButton);
         
         setBorder(customBorder);
         add(homeButton);
         add(noleggioButton);
+        add(autoButton);
+        add(areaPersonaleButton);
         
+        autoButton.setVisible(false);
 	}
 
 	public JLabel getNoleggioLabel() {
@@ -75,9 +91,40 @@ public class SideBarPanel extends JPanel{
 		this.homeButton = homeButton;
 	}
 	
-    private void setLabelDimension(JButton button) {
-    	button.setMaximumSize(new Dimension(120, 30));
-        button.setMinimumSize(new Dimension(120, 30));
+    public JLabel getAutoLabel() {
+		return autoLabel;
+	}
+
+	public void setAutoLabel(JLabel autoLabel) {
+		this.autoLabel = autoLabel;
+	}
+
+	public JButton getAutoButton() {
+		return autoButton;
+	}
+
+	public void setAutoButton(JButton autoButton) {
+		this.autoButton = autoButton;
+	}
+
+	public JLabel getAreaPersonaleLabel() {
+		return areaPersonaleLabel;
+	}
+
+	public void setAreaPersonaleLabel(JLabel areaPersonaleLabel) {
+		this.areaPersonaleLabel = areaPersonaleLabel;
+	}
+
+	public JButton getAreaPersonaleButton() {
+		return areaPersonaleButton;
+	}
+
+	public void setAreaPersonaleButton(JButton areaPersonaleButton) {
+		this.areaPersonaleButton = areaPersonaleButton;
+	}
+
+	private void setLabelDimension(JButton button) {
+    	button.setMaximumSize(new Dimension(150, 35));
     }
 	
 }
