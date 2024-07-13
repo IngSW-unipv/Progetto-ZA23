@@ -2,6 +2,7 @@ package it.unipv.sfw.rentacar.model.utenti;
 
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
+import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class Amministratore extends Utente{
 
@@ -15,6 +16,13 @@ public class Amministratore extends Utente{
 	
 	public void rimuoviAuto(AgenziaNoleggioAuto agenzia, Auto a) {
 		agenzia.getElencoAuto().remove(a);
+	}
+	
+	public void aggiornaStatoAuto(AgenziaNoleggioAuto agenzia, Auto a) {
+		if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE)) 
+			a.setStatoNoleggio(Noleggio.NOLEGGIATA);
+		else
+			a.setStatoNoleggio(Noleggio.DISPONIBILE);
 	}
 	
 	@Override
