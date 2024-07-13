@@ -1,12 +1,17 @@
 package it.unipv.sfw.rentacar.model.database.dao;
 
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
+import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
+import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
+import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
+import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 import it.unipv.sfw.rentacar.model.utenti.Amministratore;
 
 public class UtenteDAO {
@@ -19,22 +24,29 @@ public class UtenteDAO {
 		String query = "INSERT INTO utente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			stmt.setString(1, c.getNome());
-			stmt.setString(2, c.getCognome());
-			stmt.setString(3, c.getUsername());
-			stmt.setString(4, c.getPassword());
+			stmt.setString(1, c.getUsername());
+			stmt.setString(2, c.getPassword());
+			stmt.setString(3, c.getNome());
+			stmt.setString(4, c.getCognome());
 			stmt.setString(5, "CLIENTE");
 			stmt.setString(6, c.getPatente().getNumero());
 			stmt.setString(7, c.getPatente().getScadenza().toString());
 			stmt.setString(8, c.getPatente().getCategorie()[0]);
-			if (c.getPatente().getCategorie()[1] != null )
-				stmt.setString(9, c.getPatente().getCategorie()[1]);
-			else 
+			switch (c.getPatente().getCategorie().length) {
+				case 2: 
+					stmt.setString(9, c.getPatente().getCategorie()[1]);
+					stmt.setString(10, null);
+					break;
+				case 3:
+					stmt.setString(9, c.getPatente().getCategorie()[1]);
+					stmt.setString(10, c.getPatente().getCategorie()[2]);
+					break;
+			default:
 				stmt.setString(9, null);
-			if (c.getPatente().getCategorie()[2] != null ) 
-				stmt.setString(10, c.getPatente().getCategorie()[2]);
-			else
 				stmt.setString(10, null);
+				break;
+			}
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			if(e.getErrorCode() == 1062) {
 				System.out.println("Username gia in uso: " + c.getUsername() + " -> Impossibile aggiungere");
@@ -87,5 +99,44 @@ public class UtenteDAO {
 			System.err.println("Errore nell'aggiornamento della Password");
 		}
 		
-	}	
+	}
+	/*
+	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException {
+		UtenteDAO dao = new UtenteDAO();
+		
+		String[] categorie1 = {"B"};
+        Patente patente1 = new Patente("AB123456CC", "18/05/2025", categorie1);
+        Cliente cliente1 = new Cliente("Mario", "Rossi", "mrossi", "password123", patente1);
+        
+        String[] categorie2 = {"B", "C"};
+        Patente patente2 = new Patente("CD789012EF", "22/11/2026", categorie2);
+        Cliente cliente2 = new Cliente("Luigi", "Verdi", "lverdi", "password456", patente2);
+        
+        String[] categorie3 = {"B", "C", "D"};
+		Patente patente3 = new Patente("AB123456CC", "18/05/2025", categorie3);
+		Cliente cliente3 = new Cliente("Roberto", "Pitorac" , "Pito", "password789", patente3);
+		
+        String[] categorie4 = {"B", "C", "D"};
+		Patente patente4 = new Patente("AB123456CC", "18/05/2025", categorie4);
+		Cliente cliente4 = new Cliente("Roberto", "Pitorac" , "Pitorac", "password789", patente4);
+		
+		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "PitoSan", "Pitorac01");
+		AgenziaNoleggioAuto agenzia = new AgenziaNoleggioAuto("Rent-a-Car", "Via G. Mazzini, 17");
+		agenzia.aggiungiUtente(cliente1);
+		agenzia.aggiungiUtente(cliente2);
+		agenzia.aggiungiUtente(cliente3);
+		agenzia.aggiungiUtente(cliente4);
+        dao.aggiungiCliente(cliente1);
+        dao.aggiungiCliente(cliente2);
+        dao.aggiungiCliente(cliente3);	
+        dao.aggiungiCliente(cliente4);	
+        
+        agenzia.stampaUtenti();
+        
+        cliente1.setPassword("pass45");
+        dao.aggiornaPasswordCliente(cliente1, "pass45");
+        
+        System.out.println("Funziona");
+	}
+	*/
 }
