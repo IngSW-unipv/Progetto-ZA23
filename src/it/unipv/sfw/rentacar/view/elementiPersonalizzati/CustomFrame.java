@@ -20,6 +20,10 @@ public class CustomFrame extends JFrame{
 	private SideBarPanel sideBarPanel;
 	private JPanel mainPanel;
 	
+	public static void main(String[] args) throws IOException {
+		CustomFrame f = new CustomFrame();
+	}
+	
 	public CustomFrame() throws IOException {
 		
         setTitle("Rent-a-Car");
