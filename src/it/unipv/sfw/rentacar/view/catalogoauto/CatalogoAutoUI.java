@@ -43,19 +43,15 @@ public class CatalogoAutoUI {
     private JLabel marcaLabel;
     private JLabel modelloLabel;
 	private JButton cercaButton;
+
+	// Da modificare -> La logica va nel controller
 	
 	public CatalogoAutoUI(AgenziaNoleggioAuto agenzia) throws IOException, UnsupportedLookAndFeelException {
 		
 		CustomFrame frame = new CustomFrame();
 		
 		frame.getMainPanel().setLayout(new GridLayout(0, 1, 10, 10));
-		
-		try {
-			UIManager.setLookAndFeel(new NimbusLookAndFeel());
-		} catch (UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		
+
 		GridBagConstraints gbc = new GridBagConstraints();
         ricercaPanel = new JPanel();
         ricercaPanel.setBackground(new Color(173, 233, 255));
