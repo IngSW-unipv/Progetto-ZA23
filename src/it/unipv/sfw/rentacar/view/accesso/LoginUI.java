@@ -15,6 +15,7 @@ import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class LoginUI {
 
+	private CustomFrame frame;
 	private JLabel loginLabel;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
@@ -23,7 +24,7 @@ public class LoginUI {
 	private JButton loginButton;
 	
 	public LoginUI() throws IOException {
-		CustomFrame frame = new CustomFrame();
+		frame = new CustomFrame();
 		
 		frame.getMainPanel().setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();

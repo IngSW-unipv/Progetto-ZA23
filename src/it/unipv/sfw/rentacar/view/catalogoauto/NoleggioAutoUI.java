@@ -18,6 +18,7 @@ import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class NoleggioAutoUI {
 
+	private CustomFrame frame;
 	private JLabel infoAutoLabel;
 	private JLabel specificheLabel;
 	private JLabel targaLabel;
@@ -43,7 +44,7 @@ public class NoleggioAutoUI {
 	private JButton noleggioButton;
 	
 	public NoleggioAutoUI() throws IOException {
-		CustomFrame frame = new CustomFrame();
+		frame = new CustomFrame();
 		
 		JPanel mainPanel = frame.getMainPanel();
 		mainPanel.setLayout(new GridBagLayout());

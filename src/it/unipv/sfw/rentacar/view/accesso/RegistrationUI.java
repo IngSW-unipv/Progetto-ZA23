@@ -17,6 +17,7 @@ import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class RegistrationUI {
 	
+	private CustomFrame frame;
 	private JLabel registrationLabel;
 	private JLabel datiLabel;
 	private JLabel nomeLabel;
@@ -43,7 +44,7 @@ public class RegistrationUI {
 	}
 	
 	public RegistrationUI() throws IOException {
-		CustomFrame frame = new CustomFrame();
+		frame = new CustomFrame();
 		
 		frame.getMainPanel().setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();

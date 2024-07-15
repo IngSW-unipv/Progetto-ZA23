@@ -1,24 +1,19 @@
 package it.unipv.sfw.rentacar.view.catalogoauto;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.io.IOException;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
@@ -37,6 +32,7 @@ import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class CatalogoAutoUI {
 
+	private CustomFrame frame;
 	private JPanel ricercaPanel;
     private JTextField ricercaMarca;
     private JTextField ricercaModello;
@@ -48,7 +44,7 @@ public class CatalogoAutoUI {
 	
 	public CatalogoAutoUI(AgenziaNoleggioAuto agenzia) throws IOException, UnsupportedLookAndFeelException {
 		
-		CustomFrame frame = new CustomFrame();
+		frame = new CustomFrame();
 		
 		frame.getMainPanel().setLayout(new GridLayout(0, 1, 10, 10));
 
@@ -95,7 +91,7 @@ public class CatalogoAutoUI {
 		frame.setVisible(true);
 	}
 	
-	private JPanel creaCardAuto(Auto a) throws UnsupportedLookAndFeelException {
+	public JPanel creaCardAuto(Auto a) throws UnsupportedLookAndFeelException {
 	
 		JPanel auto = new JPanel();
 		auto.setLayout(new BoxLayout(auto, BoxLayout.Y_AXIS));
@@ -103,8 +99,8 @@ public class CatalogoAutoUI {
 		auto.setBackground(Color.WHITE);
 		auto.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 		
-		JLabel marcaLabel = new JLabel("Marca: " + a.getMarca());
-        JLabel modelloLabel = new JLabel("Modello: " + a.getModello());
+		marcaLabel = new JLabel("Marca: " + a.getMarca());
+        modelloLabel = new JLabel("Modello: " + a.getModello());
         JLabel costoNoleggioLabel = new JLabel("Costo Noleggio Giornaliero: " + a.getCostoNoleggioGiornaliero() + " €");
 		JButton noleggiaButton = new JButton("Noleggia");
         
