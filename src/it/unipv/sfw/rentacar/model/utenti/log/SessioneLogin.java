@@ -4,8 +4,8 @@ import it.unipv.sfw.rentacar.model.utenti.Utente;
 
 public class SessioneLogin {
 
-	private Utente utente;
 	private static SessioneLogin instance;
+	private Utente utente;
 	private boolean statoLogin;
 	
 	public SessioneLogin() {
