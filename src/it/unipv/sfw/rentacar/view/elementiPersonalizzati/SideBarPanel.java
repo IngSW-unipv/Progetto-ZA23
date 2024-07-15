@@ -15,12 +15,14 @@ public class SideBarPanel extends JPanel{
 
 	private JLabel homeLabel;
 	private JLabel noleggioLabel;
-	private JLabel autoLabel;
 	private JLabel areaPersonaleLabel;
+	private JLabel aggiungiAutoLabel;
+	private JLabel rimuoviAutoLabel;
 	private JButton homeButton;
 	private JButton noleggioButton;
-	private JButton autoButton;
 	private JButton areaPersonaleButton;
+	private JButton aggiungiAutoButton;
+	private JButton rimuoviAutoButton;
 	
 	public SideBarPanel() {
 		super();
@@ -40,10 +42,15 @@ public class SideBarPanel extends JPanel{
         noleggioButton.add(noleggioLabel);
         setButtonDimension(noleggioButton);
         
-        autoLabel = new JLabel("Auto");
-        autoButton = new JButton();
-        autoButton.add(autoLabel);
-        setButtonDimension(autoButton);
+        aggiungiAutoLabel = new JLabel("Aggiungi Auto");
+        aggiungiAutoButton = new JButton();
+        aggiungiAutoButton.add(aggiungiAutoLabel);
+        setButtonDimension(aggiungiAutoButton);
+        
+        rimuoviAutoLabel = new JLabel("Rimuovi Auto");
+        rimuoviAutoButton = new JButton();
+        rimuoviAutoButton.add(rimuoviAutoLabel );
+        setButtonDimension(rimuoviAutoButton);
         
         areaPersonaleLabel = new JLabel("Area Personale");
         areaPersonaleButton = new JButton();
@@ -53,11 +60,13 @@ public class SideBarPanel extends JPanel{
         setBorder(customBorder);
         add(homeButton);
         add(noleggioButton);
-        add(autoButton);
+        add(aggiungiAutoButton);
+        add(rimuoviAutoButton);
         add(areaPersonaleButton);
         
         areaPersonaleButton.setVisible(false);
-        autoButton.setVisible(false);
+        aggiungiAutoButton.setVisible(false);
+        rimuoviAutoButton.setVisible(false);
 	}
 
 	public JLabel getNoleggioLabel() {
@@ -91,21 +100,21 @@ public class SideBarPanel extends JPanel{
 	public void setHomeButton(JButton homeButton) {
 		this.homeButton = homeButton;
 	}
-	
-    public JLabel getAutoLabel() {
-		return autoLabel;
+
+	public JLabel getAggiungiAutoLabel() {
+		return aggiungiAutoLabel;
 	}
 
-	public void setAutoLabel(JLabel autoLabel) {
-		this.autoLabel = autoLabel;
+	public void setAggiungiAutoLabel(JLabel aggiungiAutoLabel) {
+		this.aggiungiAutoLabel = aggiungiAutoLabel;
 	}
 
-	public JButton getAutoButton() {
-		return autoButton;
+	public JButton getAggiungiAutoButton() {
+		return aggiungiAutoButton;
 	}
 
-	public void setAutoButton(JButton autoButton) {
-		this.autoButton = autoButton;
+	public void setAggiungiAutoButton(JButton aggiungiAutoButton) {
+		this.aggiungiAutoButton = aggiungiAutoButton;
 	}
 
 	public JLabel getAreaPersonaleLabel() {
@@ -124,8 +133,26 @@ public class SideBarPanel extends JPanel{
 		this.areaPersonaleButton = areaPersonaleButton;
 	}
 
+	
+	
+	public JLabel getRimuoviAutoLabel() {
+		return rimuoviAutoLabel;
+	}
+
+	public void setRimuoviAutoLabel(JLabel rimuoviAutoLabel) {
+		this.rimuoviAutoLabel = rimuoviAutoLabel;
+	}
+
+	public JButton getRimuoviAutoButton() {
+		return rimuoviAutoButton;
+	}
+
+	public void setRimuoviAutoButton(JButton rimuoviAutoButton) {
+		this.rimuoviAutoButton = rimuoviAutoButton;
+	}
+
 	private void setButtonDimension(JButton button) {
     	button.setMaximumSize(new Dimension(150, 35));
     }
-	
+
 }
