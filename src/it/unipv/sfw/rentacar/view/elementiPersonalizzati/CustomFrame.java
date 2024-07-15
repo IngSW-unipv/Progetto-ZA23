@@ -41,7 +41,7 @@ public class CustomFrame extends JFrame{
 		}
 		
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(screenSize.width, screenSize.height);
+		setSize(screenSize.width, screenSize.height);
         
         titlePanel = new TitlePanel();
         add(titlePanel, BorderLayout.NORTH);
@@ -52,7 +52,7 @@ public class CustomFrame extends JFrame{
         mainPanel = new JPanel();
         mainPanel.setBackground(new Color(168, 255, 184));
         add(mainPanel, BorderLayout.CENTER);
-        
+                
         setVisible(true);
     }
 
