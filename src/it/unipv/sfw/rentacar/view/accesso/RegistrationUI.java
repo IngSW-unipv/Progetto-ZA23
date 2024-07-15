@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import com.toedter.calendar.JDateChooser;
@@ -37,6 +38,10 @@ public class RegistrationUI {
 	private JCheckBox categoriePatenteC;
 	private JButton registrazioneButton;
 
+	public static void main(String[] args) throws IOException {
+		new RegistrationUI();
+	}
+	
 	public RegistrationUI() throws IOException {
 		CustomFrame frame = new CustomFrame();
 		
@@ -160,6 +165,8 @@ public class RegistrationUI {
 		gbc.gridy = 12;
 		frame.getMainPanel().add(registrazioneButton, gbc);
 		
+		frame.pack();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		
 	}
