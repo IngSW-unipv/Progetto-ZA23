@@ -33,22 +33,22 @@ public class SideBarPanel extends JPanel{
 		homeLabel = new JLabel("Home");
 		homeButton = new JButton();
 		homeButton.add(homeLabel);
-		setLabelDimension(homeButton);
+		setButtonDimension(homeButton);
         
 		noleggioLabel = new JLabel("Catalogo");
         noleggioButton = new JButton();
         noleggioButton.add(noleggioLabel);
-        setLabelDimension(noleggioButton);
+        setButtonDimension(noleggioButton);
         
         autoLabel = new JLabel("Auto");
         autoButton = new JButton();
         autoButton.add(autoLabel);
-        setLabelDimension(autoButton);
+        setButtonDimension(autoButton);
         
         areaPersonaleLabel = new JLabel("Area Personale");
         areaPersonaleButton = new JButton();
         areaPersonaleButton.add(areaPersonaleLabel);
-        setLabelDimension(areaPersonaleButton);
+        setButtonDimension(areaPersonaleButton);
         
         setBorder(customBorder);
         add(homeButton);
@@ -124,7 +124,7 @@ public class SideBarPanel extends JPanel{
 		this.areaPersonaleButton = areaPersonaleButton;
 	}
 
-	private void setLabelDimension(JButton button) {
+	private void setButtonDimension(JButton button) {
     	button.setMaximumSize(new Dimension(150, 35));
     }
 	
