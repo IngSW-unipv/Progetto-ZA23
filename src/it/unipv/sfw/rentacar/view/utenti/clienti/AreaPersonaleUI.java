@@ -27,11 +27,14 @@ public class AreaPersonaleUI {
 	private JLabel cambioPasswordLabel;
 	private JLabel idContrattoLabel;
 	private JLabel autoLabel;
+	private JLabel aggiornaPatenteLabel;
+	private JLabel numeroPatenteLabel;
 	private JTextField nomeField;
 	private JTextField cognomeField;
 	private JTextField usernameField;
+	private JTextField numeroPatenteField;
 	private JButton cambioPasswordButton;
-	
+	private JButton aggiornaPatenteButton;
 	
 	public static void main(String[] args) throws IOException {
 		AreaPersonaleUI area = new AreaPersonaleUI();
@@ -54,14 +57,12 @@ public class AreaPersonaleUI {
 		mainPanel.add(informazioniLabel, gbc);
 		
 		gbc.gridwidth = 1;
-		gbc.gridx = 0;
         gbc.gridy = 1;
 		nomeLabel  = new JLabel("Nome :");
 		setFontLabel(nomeLabel);
 		mainPanel.add(nomeLabel, gbc);
 		
 		gbc.gridx = 1;
-        gbc.gridy = 1;
 		nomeField = new JTextField();
 		setDimensioneField(nomeField);
 		nomeField.setEditable(false);
@@ -74,7 +75,6 @@ public class AreaPersonaleUI {
 		mainPanel.add(cognomeLabel, gbc);
 		
 		gbc.gridx = 1;
-        gbc.gridy = 2;
 		cognomeField = new JTextField();
 		setDimensioneField(cognomeField);
 		cognomeField.setEditable(false);
@@ -87,36 +87,50 @@ public class AreaPersonaleUI {
 		mainPanel.add(usernameLabel, gbc);
 		
 		gbc.gridx = 1;
-		gbc.gridy = 3;
 		usernameField  = new JTextField();
 		setDimensioneField(usernameField);
 		usernameField.setEditable(false);
 		mainPanel.add(usernameField, gbc);
 		
-		gbc.gridwidth = 2;
 		gbc.gridx = 0;
-        gbc.gridy = 4;
+		gbc.gridy = 4;
+		numeroPatenteLabel = new JLabel("Numero Patente :");
+		setFontLabel(numeroPatenteLabel);
+		mainPanel.add(numeroPatenteLabel, gbc);
+		
+		gbc.gridx = 1;
+		numeroPatenteField = new JTextField();
+		setDimensioneField(numeroPatenteField);
+		numeroPatenteField.setEditable(false);
+		mainPanel.add(numeroPatenteField, gbc);
+		
+		gbc.gridx = 0;
+        gbc.gridy = 5;
 		cambioPasswordButton  = new JButton();
 		cambioPasswordLabel = new JLabel("Cambia Password");
 		cambioPasswordButton.add(cambioPasswordLabel);
 		mainPanel.add(cambioPasswordButton, gbc);
 		
+		gbc.gridx = 1;
+		aggiornaPatenteButton = new JButton();
+		aggiornaPatenteLabel = new JLabel("Aggiorna Patente");
+		aggiornaPatenteButton.add(aggiornaPatenteLabel);
+		mainPanel.add(aggiornaPatenteButton, gbc);
+		
 		gbc.gridwidth = 2;
 		gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 6;
 		contrattiNoleggioLabel = new JLabel("Contratti Noleggio");
 		setFontTitoli(contrattiNoleggioLabel);
 		mainPanel.add(contrattiNoleggioLabel, gbc);
 		
 		gbc.gridwidth = 1;
-		gbc.gridx = 0;
-        gbc.gridy = 6;
+        gbc.gridy = 7;
         idContrattoLabel = new JLabel("ID Contratto");
         setFontLabel(idContrattoLabel);
         mainPanel.add(idContrattoLabel, gbc);
         
 		gbc.gridx = 1;
-        gbc.gridy = 6;
         autoLabel = new JLabel("Auto");
         setFontLabel(autoLabel);
         mainPanel.add(autoLabel, gbc);
