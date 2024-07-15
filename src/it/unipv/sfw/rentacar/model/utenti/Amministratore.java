@@ -26,6 +26,11 @@ public class Amministratore extends Utente{
 	}
 	
 	@Override
+	public String ruolo() {
+		return "Amministratore";
+	}
+	
+	@Override
 	public String toString() {
 		return "Amministratore [nome=" + getNome() + ", cognome=" + getCognome() + ", Username="
 				+ getUsername() + ", password()=" + getPassword() + "]";

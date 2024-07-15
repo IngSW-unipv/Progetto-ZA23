@@ -78,13 +78,13 @@ public abstract class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Utente [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password
 				+ "]";
 	}
 	
-	
+	public abstract String ruolo();
 	
 }
