@@ -18,6 +18,15 @@ public class Patente {
 	
 	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		
+		controlli(numero, dataScadenza, categorie);
+		
+		this.numero = numero;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.scadenza = LocalDate.parse(dataScadenza, formatter);
+		this.categorie = categorie;
+	}
+
+	private void controlli(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		if (numero.equals(null) || dataScadenza.equals(null) || categorie.equals(null)) {
 			throw new NullPointerException("I valori non possono essere null");
 		}
@@ -33,13 +42,8 @@ public class Patente {
 		if (!controlloPatenteB(categorie)) {
 			throw new CategoriaBPatenteException();
 		}
-		
-		this.numero = numero;
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.scadenza = LocalDate.parse(dataScadenza, formatter);
-		this.categorie = categorie;
 	}
-
+	
 	public String getNumero() {
 		return numero;
 	}
