@@ -10,13 +10,16 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class AgenziaNoleggioAuto {
 	
+    // Istanza unica della classe (singleton)
+    private static AgenziaNoleggioAuto instance;
+	
 	private String nome;
 	private String indirizzo;
 	private List<Auto> elencoAuto;
 	private List<Utente> elencoUtenti;
 	private List<ContrattoNoleggio> contratti;
 	
-	public AgenziaNoleggioAuto(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti,
+	private AgenziaNoleggioAuto(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti,
 			List<ContrattoNoleggio> contratti) {
 		
 		controlliGenerali(nome, indirizzo);
@@ -28,7 +31,7 @@ public class AgenziaNoleggioAuto {
 		this.contratti = contratti;
 	}
 	
-	public AgenziaNoleggioAuto(String nome, String indirizzo) {
+	private AgenziaNoleggioAuto(String nome, String indirizzo) {
 		
 		controlliGenerali(nome, indirizzo);
 		
@@ -38,6 +41,18 @@ public class AgenziaNoleggioAuto {
 		this.elencoUtenti = new ArrayList<>();
 		this.contratti = new ArrayList<>();
 	}
+
+    public static synchronized AgenziaNoleggioAuto getInstance(String nome, String indirizzo) {
+        return getInstance(nome, indirizzo, null, null, null);
+    }
+
+    public static synchronized AgenziaNoleggioAuto getInstance(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti, List<ContrattoNoleggio> contratti) {
+        if (instance == null) {
+        	instance = new AgenziaNoleggioAuto(nome, indirizzo, elencoAuto, elencoUtenti, contratti);
+        }
+        return instance;
+    }
+
 	
 	public String getNome() {
 		return nome;
