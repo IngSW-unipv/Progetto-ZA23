@@ -119,7 +119,7 @@ public class CatalogoAutoUI {
 		
 		Utente cl = new Cliente("Roberto", "Pitorac" , "Pito", "Pitorac01", p);
 		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "Pito", "Pitorac01");
-		AgenziaNoleggioAuto agenzia = new AgenziaNoleggioAuto("Rent-a-Car", "Via Mazzini, 17");
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Mazzini, 17");
 		agenzia.aggiungiUtente(cl);
 		Carburante[] carburante = {Carburante.BENZINA};
 		CaratteristicheTecniche ct1 = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante, 5, 150, 200);
