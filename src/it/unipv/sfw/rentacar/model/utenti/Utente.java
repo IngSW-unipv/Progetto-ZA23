@@ -9,6 +9,15 @@ public abstract class Utente {
 	
 	public Utente(String nome, String cognome, String username, String password) {
 		
+		controlli(nome, cognome, username, password);
+		
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.password = password;
+	}
+	
+	private void controlli(String nome, String cognome, String username, String password) {
 		if (nome.equals(null)) {
 			throw new NullPointerException("Nome non può essere null");
 		}
@@ -40,11 +49,6 @@ public abstract class Utente {
 		if (password.length() <= 0) {
 			throw new IllegalAccessError("Campo Password vuoto");
 		}
-		
-		this.nome = nome;
-		this.cognome = cognome;
-		this.username = username;
-		this.password = password;
 	}
 
 	public String getNome() {
