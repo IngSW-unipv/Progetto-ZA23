@@ -100,7 +100,7 @@ public class UtenteDAO {
 		}
 		
 	}
-	/*
+	
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException {
 		UtenteDAO dao = new UtenteDAO();
 		
@@ -121,7 +121,7 @@ public class UtenteDAO {
 		Cliente cliente4 = new Cliente("Roberto", "Pitorac" , "Pitorac", "password789", patente4);
 		
 		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "PitoSan", "Pitorac01");
-		AgenziaNoleggioAuto agenzia = new AgenziaNoleggioAuto("Rent-a-Car", "Via G. Mazzini, 17");
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
 		agenzia.aggiungiUtente(cliente1);
 		agenzia.aggiungiUtente(cliente2);
 		agenzia.aggiungiUtente(cliente3);
@@ -135,8 +135,17 @@ public class UtenteDAO {
         
         cliente1.setPassword("pass45");
         dao.aggiornaPasswordCliente(cliente1, "pass45");
-        
+        agenzia.stampaUtenti();
+        System.out.println("-----");
+        //agenzia.eliminaUtente(cliente1);
+        //dao.cancellaCliente(cliente1);
+        System.out.println("-----");
+        agenzia.stampaUtenti();
+        System.out.println("-----");
+        agenzia.eliminaUtente(cliente2);
+        dao.cancellaCliente(cliente2);
+        agenzia.stampaUtenti();
         System.out.println("Funziona");
 	}
-	*/
+	
 }
