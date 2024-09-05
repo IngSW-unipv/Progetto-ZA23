@@ -2,6 +2,7 @@ package it.unipv.sfw.rentacar.model.database.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
@@ -83,6 +84,7 @@ public class AutoDAO {
 			System.err.println("Errore fase di update");
 		}
 	}
+		
 	/*
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, SQLException {
 		String[] cat = {"B"};
