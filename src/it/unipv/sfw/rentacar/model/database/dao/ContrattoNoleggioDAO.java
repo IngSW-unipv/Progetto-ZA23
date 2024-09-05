@@ -6,8 +6,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
+import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
+import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
+import it.unipv.sfw.rentacar.model.exception.CartaDiCreditoScadutaException;
+import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
+import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
+import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
+import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
+import it.unipv.sfw.rentacar.model.utenti.Cliente;
+import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
+import it.unipv.sfw.rentacar.model.veicolo.Auto;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Cambio;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecniche;
+import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
 
 public class ContrattoNoleggioDAO {
 
@@ -30,6 +44,7 @@ public class ContrattoNoleggioDAO {
 			stmt.setDouble(8, cn.getImporto());
 			stmt.setString(9, stato_noleggio);
 			stmt.executeUpdate();
+			aggiornaStatoContratti();
 		} catch (SQLException e) {
 			if (e.getErrorCode() == 1062) {
 				System.err.println("Errore id contratto");
@@ -52,13 +67,13 @@ public class ContrattoNoleggioDAO {
             LocalDate oggi = LocalDate.now();
 
             while (rs.next()) {
-                int idContratto = rs.getInt("id_contratto");
+                String idContratto = rs.getString("id_contratto");
                 Date dataFine = rs.getDate("data_fine");
                 
                 if (dataFine != null) {
                     LocalDate dataFineLocal = dataFine.toLocalDate();
                     if (dataFineLocal.isBefore(oggi)) {
-                        stmtUpdate.setInt(1, idContratto);
+                        stmtUpdate.setString(1, idContratto);
                         stmtUpdate.executeUpdate();
                     }
 				}
@@ -69,7 +84,7 @@ public class ContrattoNoleggioDAO {
         }
     }
 
-	/*
+	
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, CartaDiCreditoScadutaException, SQLException {
 		ContrattoNoleggioDAO dao = new ContrattoNoleggioDAO();
 		
@@ -95,28 +110,29 @@ public class ContrattoNoleggioDAO {
 		CartaDiCredito cdc1 = new CartaDiCredito("Abe", "Pagamento Noleggio", "1111222233334444", "20/04/2027", 123);
 		CartaDiCredito cdc2 = new CartaDiCredito("Pepe", "Pagamento Noleggio", "0000222233334444", "28/04/2028", 456);
 		
-		dataInizio1 = "14/07/2024";
-		dataFine1 = "07/12/2024";
+		dataInizio1 = "05/09/2024";
+		dataFine1 = "06/09/2024";
 		
-		dataInizio2 = "16/07/2024";
+		dataInizio2 = "16/09/2024";
 		dataFine2 = "25/12/2024";
 		
-		dataInizio3 = "25/08/2024";
-		dataFine3 = "14/07/2024";
+		dataInizio3 = "25/09/2024";
+		dataFine3 = "14/10/2024";
 		
 		ContrattoNoleggio cn1 = new ContrattoNoleggio(cliente1, a1, dataInizio1, dataFine1, cdc1);
 		ContrattoNoleggio cn2 = new ContrattoNoleggio(cliente2, a2, dataInizio2, dataFine2, cdc2);
 		ContrattoNoleggio cn3 = new ContrattoNoleggio(cliente3, a3, dataInizio3, dataFine3, cdc1);
-		AgenziaNoleggioAuto agenzia = new AgenziaNoleggioAuto("Rent-a-Car", "Via G. Mazzini, 17");
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
 		
 		agenzia.aggiungiContratto(cn1);
 		agenzia.aggiungiContratto(cn2);
 		agenzia.aggiungiContratto(cn3);
+		agenzia.stampaContratti();
 		dao.aggiungiContratto(cn1);
 		dao.aggiungiContratto(cn2);
 		dao.aggiungiContratto(cn3);
         
         System.out.println("Funziona");
 	}
-	*/
+	
 }
