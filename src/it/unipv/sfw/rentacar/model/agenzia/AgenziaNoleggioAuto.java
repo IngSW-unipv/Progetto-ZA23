@@ -10,7 +10,7 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class AgenziaNoleggioAuto {
 	
-    // Istanza unica della classe (singleton)
+    // Istanza unica della classe (Singleton)
     private static AgenziaNoleggioAuto instance;
 	
 	private String nome;
@@ -19,17 +19,19 @@ public class AgenziaNoleggioAuto {
 	private List<Utente> elencoUtenti;
 	private List<ContrattoNoleggio> contratti;
 	
-	private AgenziaNoleggioAuto(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti,
-			List<ContrattoNoleggio> contratti) {
-		
-		controlliGenerali(nome, indirizzo);
-		
-		this.nome = nome;
-		this.indirizzo = indirizzo;
-		this.elencoAuto = elencoAuto;
-		this.elencoUtenti = elencoUtenti;
-		this.contratti = contratti;
-	}
+    // Costruttore privato
+    private AgenziaNoleggioAuto(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti,
+                                List<ContrattoNoleggio> contratti) {
+        
+        controlliGenerali(nome, indirizzo);
+        this.nome = nome;
+        this.indirizzo = indirizzo;
+        
+        // Inizializza le liste solo se non sono già state passate
+        this.elencoAuto = (elencoAuto != null) ? elencoAuto : new ArrayList<>();
+        this.elencoUtenti = (elencoUtenti != null) ? elencoUtenti : new ArrayList<>();
+        this.contratti = (contratti != null) ? contratti : new ArrayList<>();
+    }
 	
 	private AgenziaNoleggioAuto(String nome, String indirizzo) {
 		
@@ -43,7 +45,7 @@ public class AgenziaNoleggioAuto {
 	}
 
     public static synchronized AgenziaNoleggioAuto getInstance(String nome, String indirizzo) {
-        return getInstance(nome, indirizzo, null, null, null);
+    	return getInstance(nome, indirizzo, null, null, null);
     }
 
     public static synchronized AgenziaNoleggioAuto getInstance(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti, List<ContrattoNoleggio> contratti) {
