@@ -122,10 +122,12 @@ public class UtenteDAO {
 		
 		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "PitoSan", "Pitorac01");
 		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
+		agenzia.aggiungiUtente(amm);
 		agenzia.aggiungiUtente(cliente1);
 		agenzia.aggiungiUtente(cliente2);
 		agenzia.aggiungiUtente(cliente3);
 		agenzia.aggiungiUtente(cliente4);
+		dao.aggiungiAmministratore(amm);
         dao.aggiungiCliente(cliente1);
         dao.aggiungiCliente(cliente2);
         dao.aggiungiCliente(cliente3);	
@@ -145,7 +147,9 @@ public class UtenteDAO {
         agenzia.eliminaUtente(cliente2);
         dao.cancellaCliente(cliente2);
         agenzia.stampaUtenti();
+        
         System.out.println("Funziona");
+        
 	}
 	
 }
