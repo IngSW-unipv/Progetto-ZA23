@@ -112,6 +112,10 @@ public class AgenziaNoleggioAuto {
 		this.elencoUtenti.add(c);
 	}
 	
+	public void eliminaUtente(Utente c) {
+		this.elencoUtenti.remove(c);
+	}
+	
 	public void stampaContratti() {
 		for (ContrattoNoleggio c : contratti) {
 			System.out.println(c.toString());
