@@ -85,14 +85,13 @@ public class AutoDAO {
 		}
 	}
 		
-	/*
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, SQLException {
 		String[] cat = {"B"};
 		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
 		
 		Utente cl = new Cliente("Roberto", "Pitorac" , "Pito", "Pitorac01", p);
 		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "Pito", "Pitorac01");
-		AgenziaNoleggioAuto agenzia = new AgenziaNoleggioAuto("Rent-a-Car", "Via Mazzini, 17");
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Mazzini, 17");
 		agenzia.aggiungiUtente(cl);
 		Carburante[] carburante = {Carburante.BENZINA, null};
 		CaratteristicheTecniche ct1 = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante, 5, 150, 200);
@@ -106,15 +105,22 @@ public class AutoDAO {
 		amm.aggiungiAuto(agenzia, a1);
 		amm.aggiungiAuto(agenzia, a2);
 		amm.aggiungiAuto(agenzia, a3);
+		agenzia.stampaAuto();
+		System.out.println("----");
 		dao.eliminaAuto(a3);
 		amm.rimuoviAuto(agenzia, a3);
 		agenzia.stampaAuto();
+		System.out.println("----");
 		dao.aggiornaStatoNoleggio(a1);
 		amm.aggiornaStatoAuto(agenzia, a1);
+		
 		dao.aggiornaStatoNoleggio(a2);
 		amm.aggiornaStatoAuto(agenzia, a2);
+		
 		dao.aggiornaStatoNoleggio(a1);
 		amm.aggiornaStatoAuto(agenzia, a1);
+		
+		agenzia.stampaAuto();
 	}
-	*/
+	
 }
