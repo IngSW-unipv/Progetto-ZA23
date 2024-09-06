@@ -14,11 +14,11 @@ public class Amministratore extends Utente{
 		agenzia.getElencoAuto().add(a);
 	}
 	
-	public void rimuoviAuto(AgenziaNoleggioAuto agenzia, Auto a) {
-		agenzia.getElencoAuto().remove(a);
+	public void rimuoviAuto(Auto a) {
+		AgenziaNoleggioAuto.getInstance(getNome(), getCognome()).getElencoAuto().remove(a);
 	}
 	
-	public void aggiornaStatoAuto(AgenziaNoleggioAuto agenzia, Auto a) {
+	public void aggiornaStatoAuto(Auto a) {
 		if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE)) 
 			a.setStatoNoleggio(Noleggio.NOLEGGIATA);
 		else
