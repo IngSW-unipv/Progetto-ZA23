@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
@@ -84,8 +86,69 @@ public class AutoDAO {
 			System.err.println("Errore fase di update");
 		}
 	}
+	
+	public ArrayList<Auto> letturaDati() throws TargaNonValidaException{
+		String query;
+		String targa, modello, marca, noleggio, tipo, carburante1, carburante2; 
+		double costoNoleggioGiornaliero;
+		int annoProduzione, postiAuto, cilindrata, potenza;
+		Cambio tipoCambio;
+		Carburante[] tipoCarburante;
+		Noleggio statoNoleggio;
+		CaratteristicheTecniche ct;
+		
+		ArrayList<Auto> auto = new ArrayList<>();
+		
+		query = "SELECT * FROM auto";
+		
+		try(Connection connection = DatabaseConnection.connessione();
+				PreparedStatement stmt = connection.prepareStatement(query)) {
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				targa = rs.getString("targa");
+				marca = rs.getString("marca");
+				modello = rs.getString("modello");
+				costoNoleggioGiornaliero = rs.getDouble("costo_noleggio");
+				noleggio = rs.getString("stato_noleggio");
+				statoNoleggio = Noleggio.valueOf(noleggio.toUpperCase());
+				annoProduzione = rs.getInt("annoProduzione");
+				tipo = rs.getString("tipo_cambio");
+				tipoCambio = Cambio.valueOf(tipo.toUpperCase());
+				carburante1 = rs.getString("tipo_carburante1");
+				carburante2 = rs.getString("tipo_carburante2");
+				tipoCarburante = new Carburante[2];
+				tipoCarburante[0] = Carburante.valueOf(carburante1.toUpperCase());
+				if (carburante2 != null) {
+					tipoCarburante[1] = Carburante.valueOf(carburante2.toUpperCase());
+				}
+				postiAuto = rs.getInt("posti_auto");
+				cilindrata = rs.getInt("cilindrata");
+				potenza = rs.getInt("potenza");
+				
+				ct = new CaratteristicheTecniche(annoProduzione, tipoCambio, tipoCarburante, postiAuto, cilindrata, potenza);
+				
+				Auto a = new Auto(targa, marca, modello, ct, costoNoleggioGiornaliero);
+				
+				auto.add(a);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return auto;
+	}
 		
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, SQLException {
+		
+		AutoDAO dao = new AutoDAO();
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Mazzini, 17");
+		agenzia.setElencoAuto(dao.letturaDati());
+		
+		agenzia.stampaAuto();
+		
+		/*
 		String[] cat = {"B"};
 		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
 		
@@ -121,6 +184,7 @@ public class AutoDAO {
 		amm.aggiornaStatoAuto(agenzia, a1);
 		
 		agenzia.stampaAuto();
+		*/
 	}
 	
 }
