@@ -84,9 +84,30 @@ public class ContrattoNoleggioDAO {
         }
     }
 
+	public int verificaNumeroContratti() {
+		int id;
+		String query;
+		
+		query = "SELECT COUNT(*) AS id FROM contratto_noleggio";
+		
+		try (Connection connection = DatabaseConnection.connessione();
+				PreparedStatement stmtSelect = connection.prepareStatement(query)) {
+			ResultSet rs = stmtSelect.executeQuery();
+			if (rs.next()) {
+				id = rs.getInt("id");
+				return id;
+			}else
+				return id = 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return id = 0;
+	}
 	
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, CartaDiCreditoScadutaException, SQLException {
 		ContrattoNoleggioDAO dao = new ContrattoNoleggioDAO();
+		
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
 		
 		String[] categorie1 = {"B"};
         Patente patente1 = new Patente("AB123456CC", "18/05/2025", categorie1);
@@ -110,8 +131,8 @@ public class ContrattoNoleggioDAO {
 		CartaDiCredito cdc1 = new CartaDiCredito("Abe", "Pagamento Noleggio", "1111222233334444", "20/04/2027", 123);
 		CartaDiCredito cdc2 = new CartaDiCredito("Pepe", "Pagamento Noleggio", "0000222233334444", "28/04/2028", 456);
 		
-		dataInizio1 = "05/09/2024";
-		dataFine1 = "06/09/2024";
+		dataInizio1 = "06/09/2024";
+		dataFine1 = "07/09/2024";
 		
 		dataInizio2 = "16/09/2024";
 		dataFine2 = "25/12/2024";
@@ -120,19 +141,40 @@ public class ContrattoNoleggioDAO {
 		dataFine3 = "14/10/2024";
 		
 		ContrattoNoleggio cn1 = new ContrattoNoleggio(cliente1, a1, dataInizio1, dataFine1, cdc1);
-		ContrattoNoleggio cn2 = new ContrattoNoleggio(cliente2, a2, dataInizio2, dataFine2, cdc2);
-		ContrattoNoleggio cn3 = new ContrattoNoleggio(cliente3, a3, dataInizio3, dataFine3, cdc1);
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
-		
 		agenzia.aggiungiContratto(cn1);
-		agenzia.aggiungiContratto(cn2);
-		agenzia.aggiungiContratto(cn3);
-		agenzia.stampaContratti();
 		dao.aggiungiContratto(cn1);
+		ContrattoNoleggio cn2 = new ContrattoNoleggio(cliente2, a2, dataInizio2, dataFine2, cdc2);
+		agenzia.aggiungiContratto(cn2);
 		dao.aggiungiContratto(cn2);
+		ContrattoNoleggio cn3 = new ContrattoNoleggio(cliente3, a3, dataInizio3, dataFine3, cdc1);
+		agenzia.aggiungiContratto(cn3);
 		dao.aggiungiContratto(cn3);
+		
+		agenzia.stampaContratti();
         
         System.out.println("Funziona");
+        
+		
+        String[] categorie4 = {"B", "C", "D"};
+        Patente patente4 = new Patente("GH789012GH", "22/11/2026", categorie4);
+        Cliente cliente4 = new Cliente("Luigi", "Verdi", "lverdi", "password456", patente4);
+        
+        Carburante[] carburante4 = {Carburante.BENZINA, null};
+		CaratteristicheTecniche ct = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante4, 5, 150, 200);
+		Auto a4 = new Auto("FG456AS", "Audi", "Q7", ct, 10);
+		
+		String dataInizio4, dataFine4;
+		CartaDiCredito cdc4 = new CartaDiCredito("Rer", "Pagamento Noleggio", "1111222233334444", "20/04/2027", 123);
+		
+		dataInizio4 = "05/10/2024";
+		dataFine4 = "06/12/2024";
+		
+		ContrattoNoleggio cn = new ContrattoNoleggio(cliente4, a4, dataInizio4, dataFine4, cdc4);
+		
+		agenzia.aggiungiContratto(cn);
+		agenzia.stampaContratti();
+		dao.aggiungiContratto(cn);
+
 	}
 	
 }
