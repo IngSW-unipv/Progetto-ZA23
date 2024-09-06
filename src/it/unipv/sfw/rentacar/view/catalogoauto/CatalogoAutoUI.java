@@ -19,6 +19,7 @@ import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
 import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
+import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Amministratore;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
@@ -112,7 +113,7 @@ public class CatalogoAutoUI {
 		return auto;
 	}
 	
-	public static void main(String[] args) throws IOException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, UnsupportedLookAndFeelException {
+	public static void main(String[] args) throws IOException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, UnsupportedLookAndFeelException, UsernameDuplicatoException {
 		
 		String[] cat = {"B"};
 		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
