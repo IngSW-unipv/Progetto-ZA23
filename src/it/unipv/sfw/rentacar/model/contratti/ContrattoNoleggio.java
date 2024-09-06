@@ -3,17 +3,17 @@ package it.unipv.sfw.rentacar.model.contratti;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+import java.time.temporal.ChronoUnit;import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.Pagamento;
+import it.unipv.sfw.rentacar.model.database.dao.ContrattoNoleggioDAO;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
-import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class ContrattoNoleggio {
 
-	private static int ID = 0;
+	private static int ID;
 	private String idContratto;
 	private Cliente cliente;
 	private Auto auto;
@@ -45,7 +45,7 @@ public class ContrattoNoleggio {
 		this.importo = calcolaNoleggio();
 		this.pagamento = pagamento;
 		this.auto.setStatoNoleggio(Noleggio.NOLEGGIATA);
-		incrementaID();
+		//incrementaID();
 	}
 	
 	public static int getID() {
@@ -117,7 +117,10 @@ public class ContrattoNoleggio {
 	}
 	
 	public String creazioneIDContratto() {
-		return String.format("Rent-a-Car#%05d", ID);
+		int id;
+		ContrattoNoleggioDAO dao = new ContrattoNoleggioDAO();
+		id = dao.verificaNumeroContratti();
+		return String.format("Rent-a-Car#%05d", id);
 	}
 	
 	public int conteggioGiorniNoleggio() {
