@@ -28,7 +28,7 @@ public class AutoDAO {
 		
 	}
 	
-	public void creaAuto(Auto a) throws SQLException {
+	public void aggiungiAuto(Auto a) throws SQLException {
 		String query = "INSERT INTO auto VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
