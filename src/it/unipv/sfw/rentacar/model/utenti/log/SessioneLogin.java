@@ -19,10 +19,6 @@ public class SessioneLogin {
 		return instance;
 	}
 	
-	public static SessioneLogin returnInstance() {
-		return instance;
-	}
-	
     public void setNuovoUtente(Utente utente) {
         this.utente = utente;
         this.statoLogin = true;
