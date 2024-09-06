@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
+import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
@@ -108,8 +109,19 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
-	public void aggiungiUtente(Utente c) {
-		this.elencoUtenti.add(c);
+	public void aggiungiUtente(Utente c) throws UsernameDuplicatoException {
+		if (controlloUsernameUtenti(c)) 
+			this.elencoUtenti.add(c);
+		else
+			throw new UsernameDuplicatoException();
+	}
+	
+	public boolean controlloUsernameUtenti(Utente c) {
+		for (Utente u : elencoUtenti) {
+			if (c.getUsername().equals(u.getUsername()))
+				return false;
+		}
+		return true;
 	}
 	
 	public void eliminaUtente(Utente c) {
