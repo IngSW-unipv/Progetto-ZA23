@@ -8,7 +8,7 @@ public class SessioneLogin {
 	private Utente utente;
 	private boolean statoLogin;
 	
-	public SessioneLogin() {
+	private SessioneLogin() {
 		this.statoLogin = false;
 	}
 	
@@ -18,6 +18,11 @@ public class SessioneLogin {
 		}
 		return instance;
 	}
+	
+	public static SessioneLogin returnInstance() {
+		return instance;
+	}
+	
     public void setNuovoUtente(Utente utente) {
         this.utente = utente;
         this.statoLogin = true;
