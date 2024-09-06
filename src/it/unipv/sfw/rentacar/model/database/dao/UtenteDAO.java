@@ -12,6 +12,7 @@ import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
 import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
+import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Amministratore;
 
 public class UtenteDAO {
@@ -49,7 +50,7 @@ public class UtenteDAO {
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			if(e.getErrorCode() == 1062) {
-				System.out.println("Username gia in uso: " + c.getUsername() + " -> Impossibile aggiungere");
+				System.err.println("Username gia in uso: " + c.getUsername() + " -> Impossibile aggiungere");
 			} else {
 				throw e;
             }
@@ -101,7 +102,7 @@ public class UtenteDAO {
 		
 	}
 	
-	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException {
+	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException, UsernameDuplicatoException {
 		UtenteDAO dao = new UtenteDAO();
 		
 		String[] categorie1 = {"B"};
