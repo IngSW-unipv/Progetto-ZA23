@@ -166,10 +166,6 @@ public class AgenziaNoleggioAuto {
 		}
 		return listaRicerca;
 	}
-	
-	public static AgenziaNoleggioAuto returnInstance() {
-		return instance;
-	}
 
 	@Override
 	public String toString() {
