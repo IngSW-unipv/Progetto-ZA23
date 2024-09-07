@@ -165,7 +165,6 @@ public class UtenteDAO {
 		
 		agenzia.setElencoUtenti(dao.letturaDati()); 
 		agenzia.stampaUtenti();
-		System.out.println("ciao");
 		/*
 		String[] categorie1 = {"B"}
         Patente patente1 = new Patente("AB123456CC", "18/05/2025", categorie1);
