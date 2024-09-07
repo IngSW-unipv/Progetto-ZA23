@@ -1,17 +1,21 @@
 package it.unipv.sfw.rentacar.model.database.dao;
 
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
+import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.database.DatabaseConnection;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
 import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
+import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Amministratore;
 
@@ -102,10 +106,68 @@ public class UtenteDAO {
 		
 	}
 	
-	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException, UsernameDuplicatoException {
+	public ArrayList<Utente> letturaDati() throws TargaNonValidaException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException{
+		String query, username, password, nome, cognome, numero_patente, cat1, cat2, cat3, scadenza_patente, data_formattata;
+		String[] categorie;
+		ArrayList<Utente> utenti = new ArrayList<>();
+		
+		query = "SELECT username, password, nome, cognome, ruolo, numero_patente, scadenza_patente, categoria_patente1, categoria_patente2, categoria_patente3  FROM utente";
+		
+		try(Connection connection = DatabaseConnection.connessione();
+				PreparedStatement stmt = connection.prepareStatement(query)) {
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				username = rs.getString("username");
+				password = rs.getString("password");
+				nome = rs.getString("nome");
+				cognome = rs.getString("cognome");
+				if (rs.getString("ruolo").equals("CLIENTE")) {
+					numero_patente = rs.getString("numero_patente");
+					DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");  // Formato che arriva dal database
+				    DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Formato che desideri ottenere
+				    scadenza_patente = rs.getString("scadenza_patente");
+				    LocalDate scadenzaPatenteLocalDate = LocalDate.parse(scadenza_patente, inputFormatter);
+				    data_formattata = scadenzaPatenteLocalDate.format(outputFormatter);
+					cat1 = rs.getString("categoria_patente1");
+					cat2 = rs.getString("categoria_patente2");
+					cat3 = rs.getString("categoria_patente3");
+					categorie = new String[3];
+					categorie[0] = cat1;
+					if (cat2 != null) {
+						categorie[1] = cat2;
+						if (cat3 != null) {
+							categorie[2] = cat3;
+						}
+					}
+					Patente p = new Patente(numero_patente, data_formattata, categorie);
+					Cliente c = new Cliente(nome, cognome, username, password, p);
+					
+					utenti.add(c);
+					
+				}else {
+					Amministratore a = new Amministratore(nome, cognome, username, password);
+					utenti.add(a);
+				}	
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utenti;
+	}
+
+	
+	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException, UsernameDuplicatoException, TargaNonValidaException {
 		UtenteDAO dao = new UtenteDAO();
 		
-		String[] categorie1 = {"B"};
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
+		
+		agenzia.setElencoUtenti(dao.letturaDati()); 
+		agenzia.stampaUtenti();
+		System.out.println("ciao");
+		/*
+		String[] categorie1 = {"B"}
         Patente patente1 = new Patente("AB123456CC", "18/05/2025", categorie1);
         Cliente cliente1 = new Cliente("Mario", "Rossi", "mrossi", "password123", patente1);
         
@@ -150,7 +212,7 @@ public class UtenteDAO {
         agenzia.stampaUtenti();
         
         System.out.println("Funziona");
-        
+        */
 	}
 	
 }
