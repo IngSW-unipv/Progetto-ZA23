@@ -43,7 +43,7 @@ public class CatalogoAutoUI {
 
 	// Da modificare -> La logica va nel controller
 	
-	public CatalogoAutoUI(AgenziaNoleggioAuto agenzia) throws IOException, UnsupportedLookAndFeelException {
+	public CatalogoAutoUI() throws IOException, UnsupportedLookAndFeelException {
 		
 		frame = new CustomFrame();
 		
@@ -77,14 +77,15 @@ public class CatalogoAutoUI {
         ricercaPanel.add(cercaButton);
         
         frame.getMainPanel().add(ricercaPanel);
-		
+        
+        /*
 		for (Auto a : agenzia.getElencoAuto()) {
 			if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE)) {
 				JPanel cardAuto = creaCardAuto(a);
 				frame.getMainPanel().add(cardAuto);
 			}
 		}
-		
+		*/
 		JScrollPane scrollPane = new JScrollPane(frame.getMainPanel());
 		frame.add(scrollPane);
 		
@@ -114,7 +115,7 @@ public class CatalogoAutoUI {
 	}
 	
 	public static void main(String[] args) throws IOException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, UnsupportedLookAndFeelException, UsernameDuplicatoException {
-		
+		/*
 		String[] cat = {"B"};
 		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
 		
@@ -148,7 +149,8 @@ public class CatalogoAutoUI {
 		amm.aggiungiAuto(agenzia, a6);
 		amm.aggiungiAuto(agenzia, a7);
 		amm.aggiungiAuto(agenzia, a8);
-		CatalogoAutoUI catalogo = new CatalogoAutoUI(agenzia);
+		*/
+		new CatalogoAutoUI();
 	}
 
 	public JTextField getRicercaMarca() {
@@ -198,5 +200,7 @@ public class CatalogoAutoUI {
 	public void setRicercaPanel(JPanel ricercaPanel) {
 		this.ricercaPanel = ricercaPanel;
 	}
+	
+	
 
 }
