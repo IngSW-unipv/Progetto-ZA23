@@ -8,7 +8,7 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class Cliente extends Utente {
 
-	public Patente patente;
+	private Patente patente;
 	
 	public Cliente(String nome, String cognome, String username, String password, Patente patente) {
 		super(nome, cognome, username, password);
