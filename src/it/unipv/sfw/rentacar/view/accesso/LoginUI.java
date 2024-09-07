@@ -70,6 +70,14 @@ public class LoginUI {
 		frame.setVisible(true);
 	}
 
+	public CustomFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(CustomFrame frame) {
+		this.frame = frame;
+	}
+
 	public JLabel getLoginLabel() {
 		return loginLabel;
 	}
