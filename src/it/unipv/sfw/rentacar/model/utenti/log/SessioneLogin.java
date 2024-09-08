@@ -24,6 +24,10 @@ public class SessioneLogin {
         this.statoLogin = true;
     }
 
+    public void login() {
+    	this.statoLogin = true;
+    }
+    
     public void logout() {
         this.utente = null;
         this.statoLogin = false;
