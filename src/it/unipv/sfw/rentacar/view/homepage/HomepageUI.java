@@ -10,6 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import it.unipv.sfw.rentacar.controller.homepage.HomepageController;
+import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import it.unipv.sfw.rentacar.model.database.dao.UtenteDAO;
+import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
+import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
+import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
+import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class HomepageUI {
@@ -28,6 +35,7 @@ public class HomepageUI {
 	private JLabel labelAuto2;
 	private JLabel imgAuto2Descr;
 	private JLabel arrowLabel;
+	private JButton buttonNoleggio;
 	
 	public HomepageUI() throws IOException {
 		frame = new CustomFrame();
@@ -98,7 +106,7 @@ public class HomepageUI {
 		
 		JLabel labelButtonNoleggio = new JLabel("Inizia Noleggio");
 		labelButtonNoleggio.setFont(new Font("Arial", Font.BOLD, 20));
-		JButton buttonNoleggio = new JButton();
+		buttonNoleggio = new JButton();
 		buttonNoleggio.add(labelButtonNoleggio);
         gbc.gridx = 1;
 		gbc.gridy = 5;
@@ -221,7 +229,20 @@ public class HomepageUI {
 	public void setArrowLabel(JLabel arrowLabel) {
 		this.arrowLabel = arrowLabel;
 	}
-	public static void main(String[] args) throws IOException {
+	
+	public JButton getButtonNoleggio() {
+		return buttonNoleggio;
+	}
+
+	public void setButtonNoleggio(JButton buttonNoleggio) {
+		this.buttonNoleggio = buttonNoleggio;
+	}
+
+	public static void main(String[] args) throws IOException, TargaNonValidaException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		HomepageUI home = new HomepageUI();
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Roma, 71, Milano");
+		UtenteDAO dao = new UtenteDAO();
+		agenzia.setElencoUtenti(dao.letturaDati());
+		HomepageController contr = new HomepageController(agenzia, home);
 	}
 }
