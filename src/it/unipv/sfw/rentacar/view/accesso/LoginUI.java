@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import it.unipv.sfw.rentacar.controller.accesso.LoginController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
@@ -126,5 +127,10 @@ public class LoginUI {
 	public void setLoginButton(JButton loginButton) {
 		this.loginButton = loginButton;
 	}
-
+	
+	public static void main(String[] args) throws IOException {
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent", "Via Roma, Mediglia");
+		new LoginController(agenzia, new LoginUI());
+	}
+	
 }
