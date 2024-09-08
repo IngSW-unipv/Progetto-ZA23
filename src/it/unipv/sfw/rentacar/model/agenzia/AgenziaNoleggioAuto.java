@@ -7,6 +7,7 @@ import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
+import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class AgenziaNoleggioAuto {
@@ -177,6 +178,16 @@ public class AgenziaNoleggioAuto {
 			}
 		}
 		return listaRicerca;
+	}
+	
+	public void cercaUtenteRegistrato(String user, String pass) {
+		for (Utente u : this.getElencoUtenti()) {
+			if (u.getUsername().equals(user) && u.getPassword().equals(pass)) {
+				SessioneLogin sessione = SessioneLogin.getInstance();
+				sessione.setNuovoUtente(u);
+				sessione.login();
+			}
+		}
 	}
 
 	@Override
