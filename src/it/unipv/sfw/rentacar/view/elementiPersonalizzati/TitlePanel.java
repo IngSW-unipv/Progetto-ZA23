@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class TitlePanel extends JPanel{
@@ -52,7 +53,7 @@ public class TitlePanel extends JPanel{
         registerButton = new JButton("Registrazione");
         registerButton.setPreferredSize(new Dimension(120, 30));
         
-        loginLabel = new JLabel("Benvenuto");
+        loginLabel = new JLabel("Benvenuto/a");
         loginLabel.setPreferredSize(new Dimension(120, 30));
         
         logoutButton = new JButton("Logout");
@@ -66,6 +67,12 @@ public class TitlePanel extends JPanel{
         
         loginLabel.setVisible(false);
         logoutButton.setVisible(false);
+        
+        if (SessioneLogin.getInstance().isLoggedIn()) {
+			this.modalitàCliente();
+		}else
+			this.modalitàLogout();
+        
 	}
 
 	public ImageIcon getImageIcon() {
@@ -123,4 +130,20 @@ public class TitlePanel extends JPanel{
 	public void setLogoutButton(JButton logoutButton) {
 		this.logoutButton = logoutButton;
 	}
+	
+	public void modalitàCliente() {
+		this.getLoginButton().setVisible(false);
+		this.getLogoutButton().setVisible(true);
+		this.getRegisterButton().setVisible(false);
+		this.getLoginLabel().setVisible(true);
+		this.getLoginLabel().setText(this.getLoginLabel().getText() + " " + SessioneLogin.getInstance().getUtenteLoggato().getUsername() + "      ");	
+	}
+	
+	public void modalitàLogout() {
+		this.getLoginButton().setVisible(true);
+		this.getLogoutButton().setVisible(false);
+		this.getLoginLabel().setVisible(false);
+		this.getRegisterButton().setVisible(true);	
+	}
+	
 }
