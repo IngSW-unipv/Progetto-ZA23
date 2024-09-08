@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
+
+import it.unipv.sfw.rentacar.controller.catalogoauto.CatalogoAutoController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
@@ -150,7 +152,8 @@ public class CatalogoAutoUI {
 		amm.aggiungiAuto(agenzia, a7);
 		amm.aggiungiAuto(agenzia, a8);
 		*/
-		new CatalogoAutoUI();
+		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent a Car","Via roma, mediglia");
+		new CatalogoAutoController(agenzia, new CatalogoAutoUI());
 	}
 
 	public JTextField getRicercaMarca() {
@@ -200,7 +203,13 @@ public class CatalogoAutoUI {
 	public void setRicercaPanel(JPanel ricercaPanel) {
 		this.ricercaPanel = ricercaPanel;
 	}
-	
-	
+
+	public CustomFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(CustomFrame frame) {
+		this.frame = frame;
+	}
 
 }
