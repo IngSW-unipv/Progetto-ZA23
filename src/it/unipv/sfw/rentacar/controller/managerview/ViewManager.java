@@ -7,12 +7,16 @@ import javax.swing.UnsupportedLookAndFeelException;
 import it.unipv.sfw.rentacar.controller.accesso.RegistrationController;
 import it.unipv.sfw.rentacar.controller.accesso.LoginController;
 import it.unipv.sfw.rentacar.controller.catalogoauto.CatalogoAutoController;
+import it.unipv.sfw.rentacar.controller.clienti.AreaPersonaleController;
+import it.unipv.sfw.rentacar.controller.clienti.CambioPasswordController;
 import it.unipv.sfw.rentacar.controller.homepage.HomepageController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.view.accesso.LoginUI;
 import it.unipv.sfw.rentacar.view.accesso.RegistrationUI;
 import it.unipv.sfw.rentacar.view.catalogoauto.CatalogoAutoUI;
 import it.unipv.sfw.rentacar.view.homepage.HomepageUI;
+import it.unipv.sfw.rentacar.view.utenti.clienti.AreaPersonaleUI;
+import it.unipv.sfw.rentacar.view.utenti.clienti.CambioPasswordUI;
 
 public class ViewManager {
 	
@@ -34,5 +38,13 @@ public class ViewManager {
 	
 	public void passaAlCatalogoAutoUI(AgenziaNoleggioAuto agenzia) throws IOException, UnsupportedLookAndFeelException {
 		new CatalogoAutoController(agenzia, new CatalogoAutoUI());
+	}
+	
+	public void passaAllAreaPersonaleUI(AgenziaNoleggioAuto agenzia) throws IOException, UnsupportedLookAndFeelException {
+		new AreaPersonaleController(agenzia, new AreaPersonaleUI());
+	}
+	
+	public void passaAlCambioPasswordUI(AgenziaNoleggioAuto agenzia) throws IOException {
+		new CambioPasswordController(agenzia, new CambioPasswordUI());
 	}
 }
