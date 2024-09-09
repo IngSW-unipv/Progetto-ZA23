@@ -48,7 +48,7 @@ public class RegistrationUI {
 		
 		frame.getMainPanel().setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.insets = new Insets(5, 2, 5, 5);
 		
 		registrationLabel = new JLabel("Registrazione");
 		registrationLabel.setFont(new Font("Arial", Font.PLAIN, 50));
@@ -166,13 +166,9 @@ public class RegistrationUI {
 		gbc.gridy = 12;
 		frame.getMainPanel().add(registrazioneButton, gbc);
 		
-		frame.pack();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		
 	}
-	
-	
 
 	public CustomFrame getFrame() {
 		return frame;
