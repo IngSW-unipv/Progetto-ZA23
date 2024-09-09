@@ -93,12 +93,12 @@ public class UtenteDAO {
 		}
 	}
 	
-	public void aggiornaPasswordCliente(Cliente c, String nuovaPassword) throws SQLException {
+	public void aggiornaPasswordCliente(Utente utente, String nuovaPassword) throws SQLException {
 		String query = "UPDATE utente SET password = ? WHERE username = ?";
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
 			stmt.setString(1, nuovaPassword);
-			stmt.setString(2, c.getUsername());
+			stmt.setString(2, utente.getUsername());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println("Errore nell'aggiornamento della Password");
