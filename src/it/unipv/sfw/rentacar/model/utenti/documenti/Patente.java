@@ -57,8 +57,13 @@ public class Patente {
 		return scadenza;
 	}
 	
-	public void setScadenza(LocalDate rinnovo) {
-		this.scadenza = rinnovo;
+	public void setScadenza(LocalDate rinnovo) throws Exception {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataString = rinnovo.format(formatter);
+        if (verificaScadenzaPatente(dataString)) {
+        	this.scadenza = rinnovo;
+		}else
+			throw new Exception("Data Scadenza Patente non valida");
 	}
 	
 	public String[] getCategorie() {
