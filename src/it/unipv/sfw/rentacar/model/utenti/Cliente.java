@@ -14,6 +14,11 @@ public class Cliente extends Utente {
 		super(nome, cognome, username, password);
 		this.patente = patente;
 	}
+	
+	public Cliente(Cliente c) {
+		super(c.getNome(), c.getCognome(), c.getUsername(), c.getPassword());
+		this.patente = c.getPatente();
+	}
 
 	public Patente getPatente() {
 		return patente;
