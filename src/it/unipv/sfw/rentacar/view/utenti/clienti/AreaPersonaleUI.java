@@ -135,7 +135,7 @@ public class AreaPersonaleUI {
         setFontLabel(autoLabel);
         mainPanel.add(autoLabel, gbc);
 		
-		frame.pack();
+		//frame.pack();
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
@@ -201,6 +201,86 @@ public class AreaPersonaleUI {
 
 	public void setCambioPasswordButton(JButton cambioPasswordButton) {
 		this.cambioPasswordButton = cambioPasswordButton;
+	}
+
+	public JLabel getCambioPasswordLabel() {
+		return cambioPasswordLabel;
+	}
+
+	public void setCambioPasswordLabel(JLabel cambioPasswordLabel) {
+		this.cambioPasswordLabel = cambioPasswordLabel;
+	}
+
+	public JLabel getIdContrattoLabel() {
+		return idContrattoLabel;
+	}
+
+	public void setIdContrattoLabel(JLabel idContrattoLabel) {
+		this.idContrattoLabel = idContrattoLabel;
+	}
+
+	public JLabel getAutoLabel() {
+		return autoLabel;
+	}
+
+	public void setAutoLabel(JLabel autoLabel) {
+		this.autoLabel = autoLabel;
+	}
+
+	public JLabel getAggiornaPatenteLabel() {
+		return aggiornaPatenteLabel;
+	}
+
+	public void setAggiornaPatenteLabel(JLabel aggiornaPatenteLabel) {
+		this.aggiornaPatenteLabel = aggiornaPatenteLabel;
+	}
+
+	public JLabel getNumeroPatenteLabel() {
+		return numeroPatenteLabel;
+	}
+
+	public void setNumeroPatenteLabel(JLabel numeroPatenteLabel) {
+		this.numeroPatenteLabel = numeroPatenteLabel;
+	}
+
+	public JTextField getNomeField() {
+		return nomeField;
+	}
+
+	public void setNomeField(JTextField nomeField) {
+		this.nomeField = nomeField;
+	}
+
+	public JTextField getCognomeField() {
+		return cognomeField;
+	}
+
+	public void setCognomeField(JTextField cognomeField) {
+		this.cognomeField = cognomeField;
+	}
+
+	public JTextField getUsernameField() {
+		return usernameField;
+	}
+
+	public void setUsernameField(JTextField usernameField) {
+		this.usernameField = usernameField;
+	}
+
+	public JTextField getNumeroPatenteField() {
+		return numeroPatenteField;
+	}
+
+	public void setNumeroPatenteField(JTextField numeroPatenteField) {
+		this.numeroPatenteField = numeroPatenteField;
+	}
+
+	public JButton getAggiornaPatenteButton() {
+		return aggiornaPatenteButton;
+	}
+
+	public void setAggiornaPatenteButton(JButton aggiornaPatenteButton) {
+		this.aggiornaPatenteButton = aggiornaPatenteButton;
 	}
 
 	private void setFontTitoli(JLabel label) {
