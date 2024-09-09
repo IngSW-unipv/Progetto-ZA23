@@ -157,6 +157,24 @@ public class UtenteDAO {
 		return utenti;
 	}
 
+	public void rinnovaPatente(Cliente c, LocalDate scadenzaPatente) {
+		String query;
+		
+		query = "UPDATE utente SET scadenza_patente = ? WHERE username = ?";
+		
+		try (Connection connection = DatabaseConnection.connessione();
+				PreparedStatement stmt = connection.prepareStatement(query)){
+			
+			stmt.setDate(1, java.sql.Date.valueOf(scadenzaPatente));
+			stmt.setString(2, c.getUsername());
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException, UsernameDuplicatoException, TargaNonValidaException {
 		UtenteDAO dao = new UtenteDAO();
