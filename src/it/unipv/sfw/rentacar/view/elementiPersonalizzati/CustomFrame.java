@@ -53,7 +53,8 @@ public class CustomFrame extends JFrame{
         mainPanel.setBackground(new Color(168, 255, 184));
         add(mainPanel, BorderLayout.CENTER);
                 
-        setVisible(true);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setVisible(true);
     }
 
 	public File getIconFile() {
