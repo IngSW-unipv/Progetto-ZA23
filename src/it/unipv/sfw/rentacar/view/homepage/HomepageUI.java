@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 
 import it.unipv.sfw.rentacar.controller.homepage.HomepageController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import it.unipv.sfw.rentacar.model.database.dao.AutoDAO;
 import it.unipv.sfw.rentacar.model.database.dao.UtenteDAO;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
@@ -241,8 +242,11 @@ public class HomepageUI {
 	public static void main(String[] args) throws IOException, TargaNonValidaException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		HomepageUI home = new HomepageUI();
 		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Roma, 71, Milano");
-		UtenteDAO dao = new UtenteDAO();
-		agenzia.setElencoUtenti(dao.letturaDati());
+		UtenteDAO daoUtenti = new UtenteDAO();
+		AutoDAO daoAuto = new AutoDAO();
+		agenzia.setElencoUtenti(daoUtenti.letturaDati());
+		agenzia.setElencoAuto(daoAuto.letturaDati());
+		agenzia.stampaAuto();
 		HomepageController contr = new HomepageController(agenzia, home);
 	}
 }
