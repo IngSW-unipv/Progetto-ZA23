@@ -69,6 +69,34 @@ public class HomepageController {
 			}
 		});
 		
+		view.getFrame().getSideBarPanel().getAggiungiAutoButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ViewManager manager = new ViewManager();
+					manager.passaAdAggiungiAutoUI(model);
+					view.getFrame().dispose();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		view.getFrame().getSideBarPanel().getRimuoviAutoButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					ViewManager manager = new ViewManager();
+					manager.passaARimuoviAutoUI(model);
+					view.getFrame().dispose();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		view.getFrame().getTitlePanel().getLoginButton().addActionListener(new ActionListener() {
 			
 			@Override
