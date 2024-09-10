@@ -91,10 +91,10 @@ public class AggiungiAutoController {
 						e1.getMessage();
 						return;
 					} catch (IOException e1) {
-						e1.getMessage();
+						e1.printStackTrace();
 						return;
 					} catch (SQLException e1) {
-						e1.getMessage();
+						e1.printStackTrace();
 						return;
 					}
 					
