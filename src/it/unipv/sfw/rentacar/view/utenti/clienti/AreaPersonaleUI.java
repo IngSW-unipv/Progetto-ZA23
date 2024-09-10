@@ -36,17 +36,12 @@ public class AreaPersonaleUI {
 	private JButton cambioPasswordButton;
 	private JButton aggiornaPatenteButton;
 	
-	public static void main(String[] args) throws IOException {
-		AreaPersonaleUI area = new AreaPersonaleUI();
-	}
-	
 	public AreaPersonaleUI() throws IOException {
 		frame = new CustomFrame();
 		
 		mainPanel = frame.getMainPanel();
 		mainPanel.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-
         gbc.insets = new Insets(10, 10, 10, 10);
 		
         gbc.gridx = 0;
