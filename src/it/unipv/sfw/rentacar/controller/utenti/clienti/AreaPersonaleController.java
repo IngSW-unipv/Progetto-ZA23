@@ -1,4 +1,4 @@
-package it.unipv.sfw.rentacar.controller.clienti;
+package it.unipv.sfw.rentacar.controller.utenti.clienti;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
