@@ -136,6 +136,8 @@ public class RegistrationUI {
 		scadenzaPatente = new JDateChooser();
 		scadenzaPatente.setDateFormatString("dd/MM/yyyy");
 		scadenzaPatente.setPreferredSize(new Dimension(115, 20));
+		JTextField dataField = (JTextField) scadenzaPatente.getDateEditor().getUiComponent();
+		dataField.setEditable(false);
 		gbc.gridx = 1;
 		gbc.gridy = 8;
 		frame.getMainPanel().add(scadenzaPatente, gbc);
