@@ -98,12 +98,9 @@ public class RinnovoPatenteController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//String rinnovoPatente;
 				java.util.Date data;
 				LocalDate dataLocal;
 				data =  (java.util.Date)view.getNuovaScadenza().getDate();
-				//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                //rinnovoPatente = dateFormat.format(data);
 				Instant instant = data.toInstant();
                 dataLocal = instant.atZone(ZoneId.systemDefault()).toLocalDate();
 	            		
