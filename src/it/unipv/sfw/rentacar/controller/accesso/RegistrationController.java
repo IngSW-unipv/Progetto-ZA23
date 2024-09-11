@@ -41,7 +41,7 @@ public class RegistrationController {
 
 	private void initController() {
 		
-view.getFrame().getTitlePanel().getLoginButton().addActionListener(new ActionListener() {
+		view.getFrame().getTitlePanel().getLoginButton().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
