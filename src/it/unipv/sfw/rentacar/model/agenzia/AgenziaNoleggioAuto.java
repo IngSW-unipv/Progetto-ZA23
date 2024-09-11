@@ -1,9 +1,11 @@
 package it.unipv.sfw.rentacar.model.agenzia;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
+import it.unipv.sfw.rentacar.model.database.dao.UtenteDAO;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
@@ -110,11 +112,12 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
-	public void aggiungiUtente(Utente c) throws UsernameDuplicatoException {
-		if (controlloUsernameUtenti(c)) 
+	public void aggiungiUtente(Utente c) throws UsernameDuplicatoException, SQLException {
+		if (controlloUsernameUtenti(c)) {
 			this.elencoUtenti.add(c);
-		else
-			throw new UsernameDuplicatoException();
+			UtenteDAO dao = new UtenteDAO();
+			dao.aggiungiCliente((Cliente) c);
+		}
 	}
 	
 	public boolean controlloUsernameUtenti(Utente c) {
