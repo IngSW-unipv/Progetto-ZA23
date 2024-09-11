@@ -247,6 +247,7 @@ public class HomepageUI {
 		agenzia.setElencoUtenti(daoUtenti.letturaDati());
 		agenzia.setElencoAuto(daoAuto.letturaDati());
 		agenzia.stampaAuto();
+		agenzia.stampaUtenti();
 		HomepageController contr = new HomepageController(agenzia, home);
 	}
 }
