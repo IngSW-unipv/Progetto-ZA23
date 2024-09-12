@@ -105,7 +105,10 @@ public class LoginController {
 				model.cercaUtenteRegistrato(username, password);
 						
 				if (SessioneLogin.getInstance().isLoggedIn()) {
-					JOptionPane.showMessageDialog(view.getFrame(), "Login avvenuto con successo!", "Successo", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(view.getFrame(),
+							"Login avvenuto con successo!",
+							"Successo",
+							JOptionPane.INFORMATION_MESSAGE);
 					try {
 						ViewManager manager = new ViewManager();
 						manager.passaAllaHomePageUI(model);
