@@ -128,8 +128,8 @@ public class ContrattoNoleggioDAO {
 		Auto a3 = new Auto("FG456AS", "Audi", "Q7", ct1, 10);
 		
 		String dataInizio1, dataFine1, dataInizio2, dataFine2, dataInizio3 , dataFine3;
-		CartaDiCredito cdc1 = new CartaDiCredito("Abe", "Pagamento Noleggio", "1111222233334444", "20/04/2027", 123);
-		CartaDiCredito cdc2 = new CartaDiCredito("Pepe", "Pagamento Noleggio", "0000222233334444", "28/04/2028", 456);
+		CartaDiCredito cdc1 = new CartaDiCredito("1111222233334444", "20/04/2027", 123);
+		CartaDiCredito cdc2 = new CartaDiCredito("0000222233334444", "28/04/2028", 456);
 		
 		dataInizio1 = "06/09/2024";
 		dataFine1 = "07/09/2024";
@@ -164,7 +164,7 @@ public class ContrattoNoleggioDAO {
 		Auto a4 = new Auto("FG456AS", "Audi", "Q7", ct, 10);
 		
 		String dataInizio4, dataFine4;
-		CartaDiCredito cdc4 = new CartaDiCredito("Rer", "Pagamento Noleggio", "1111222233334444", "20/04/2027", 123);
+		CartaDiCredito cdc4 = new CartaDiCredito("1111222233334444", "20/04/2027", 123);
 		
 		dataInizio4 = "05/10/2024";
 		dataFine4 = "06/12/2024";
