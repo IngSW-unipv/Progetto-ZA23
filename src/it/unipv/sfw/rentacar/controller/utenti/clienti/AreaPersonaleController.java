@@ -26,12 +26,8 @@ public class AreaPersonaleController {
 
 	private void initController() {
 		
-		Cliente c = new Cliente((Cliente)SessioneLogin.getInstance().getUtenteLoggato());
+		visualizzaDati();
 		
-		view.getNomeField().setText(SessioneLogin.getInstance().getUtenteLoggato().getNome());
-		view.getCognomeField().setText(SessioneLogin.getInstance().getUtenteLoggato().getCognome());
-		view.getUsernameField().setText(SessioneLogin.getInstance().getUtenteLoggato().getUsername());
-		view.getNumeroPatenteField().setText(c.getPatente().getNumero());
 		
 		view.getFrame().getTitlePanel().getLogoutButton().addActionListener(new ActionListener() {
 			
@@ -124,6 +120,24 @@ public class AreaPersonaleController {
 			}
 		});
 			
+	}
+
+	private void visualizzaDati() {
+		
+		Cliente c = new Cliente((Cliente)SessioneLogin.getInstance().getUtenteLoggato());
+		
+		view.getNomeField().setText(SessioneLogin.getInstance().getUtenteLoggato().getNome());
+		view.getCognomeField().setText(SessioneLogin.getInstance().getUtenteLoggato().getCognome());
+		view.getUsernameField().setText(SessioneLogin.getInstance().getUtenteLoggato().getUsername());
+		view.getNumeroPatenteField().setText(c.getPatente().getNumero());
+		
+		for (int i = 0; i < model.getContratti().size(); i++) {
+			if (model.getContratti().get(i).getCliente().getUsername().equals(c.getUsername())) {
+				view.getIdContratto().setText(model.getContratti().get(i).getIdContratto());
+				view.getAuto().setText(model.getContratti().get(i).getAuto().getMarca() + " " + model.getContratti().get(i).getAuto().getModello());
+			}
+		}
+		
 	}
 	
 }
