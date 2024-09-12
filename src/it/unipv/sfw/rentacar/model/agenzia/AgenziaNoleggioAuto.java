@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unipv.sfw.rentacar.model.contratti.ContrattoNoleggio;
+import it.unipv.sfw.rentacar.model.database.dao.ContrattoNoleggioDAO;
 import it.unipv.sfw.rentacar.model.database.dao.UtenteDAO;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
+import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class AgenziaNoleggioAuto {
 	
@@ -138,7 +140,9 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 	
-	public void aggiungiContratto(ContrattoNoleggio c) {
+	public void aggiungiContratto(ContrattoNoleggio c) throws SQLException {
+		ContrattoNoleggioDAO dao = new ContrattoNoleggioDAO();
+		dao.aggiungiContratto(c);
 		this.contratti.add(c);
 	}
 	
@@ -166,7 +170,7 @@ public class AgenziaNoleggioAuto {
 	public ArrayList<Auto> cercaAutoPerMarca(String marca){
 		ArrayList<Auto> listaRicerca = new ArrayList<>();
 		for (Auto auto : elencoAuto) {
-			if (auto.getMarca().equals(marca)) {
+			if (auto.getMarca().toLowerCase().contains(marca)) {
 				listaRicerca.add(auto);
 			}
 		}
@@ -176,7 +180,9 @@ public class AgenziaNoleggioAuto {
 	public ArrayList<Auto> cercaAutoPerMarcaEPerModello(String marca, String modello){
 		ArrayList<Auto> listaRicerca = new ArrayList<>();
 		for (Auto auto : elencoAuto) {
-			if (auto.getMarca().equals(marca) && auto.getModello().equals(modello)) {
+			if (auto.getStatoNoleggio().equals(Noleggio.DISPONIBILE) &&
+					auto.getMarca().toLowerCase().contains(marca) &&
+					auto.getModello().toLowerCase().contains(modello)) {
 				listaRicerca.add(auto);
 			}
 		}
@@ -193,6 +199,13 @@ public class AgenziaNoleggioAuto {
 		}
 	}
 
+	public void cambiaStatoNoleggio(Auto a) {
+		if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE))
+			a.setStatoNoleggio(Noleggio.NOLEGGIATA);
+		else
+			a.setStatoNoleggio(Noleggio.DISPONIBILE);
+	}
+	
 	@Override
 	public String toString() {
 		return "AgenziaNoleggioAuto [nome=" + nome + ", indirizzo=" + indirizzo + ", elencoAuto=" + elencoAuto
