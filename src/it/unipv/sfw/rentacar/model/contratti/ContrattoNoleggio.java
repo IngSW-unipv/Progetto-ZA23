@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
-import it.unipv.sfw.rentacar.model.contratti.pagamenti.Pagamento;
 import it.unipv.sfw.rentacar.model.database.dao.ContrattoNoleggioDAO;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
@@ -20,7 +19,7 @@ public class ContrattoNoleggio {
 	private LocalDate inizioNoleggio;
 	private LocalDate fineNoleggio;
 	private double importo;
-	private Pagamento pagamento;
+	private CartaDiCredito pagamento;
 	
 	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, CartaDiCredito pagamento) {
 		
@@ -104,11 +103,11 @@ public class ContrattoNoleggio {
 		this.importo = importo;
 	}
 
-	public Pagamento getPagamento() {
+	public CartaDiCredito getPagamento() {
 		return pagamento;
 	}
 
-	public void setPagamento(Pagamento pagamento) {
+	public void setPagamento(CartaDiCredito pagamento) {
 		this.pagamento = pagamento;
 	}
 
@@ -139,7 +138,8 @@ public class ContrattoNoleggio {
 		dataInizio = LocalDate.parse(inizio, formatter);
 		dataFine = LocalDate.parse(fine, formatter);
 		
-		if ((dataInizio.isAfter(LocalDate.now()) || dataInizio.equals(LocalDate.now())) && dataInizio.isBefore(dataFine)) {
+		if ((dataInizio.isAfter(LocalDate.now()) || dataInizio.equals(LocalDate.now())) 
+				&& dataInizio.isBefore(dataFine)) {
 			return true;
 		}else
 			return false;
