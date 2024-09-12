@@ -7,14 +7,13 @@ import java.util.regex.Pattern;
 
 import it.unipv.sfw.rentacar.model.exception.CartaDiCreditoScadutaException;
 
-public class CartaDiCredito extends Pagamento{
+public class CartaDiCredito{
 
 	private String numero;
 	private LocalDate scadenza;
 	private int cvv;
 	
-	public CartaDiCredito(String titolare, String causale, String numero, String scadenza, int cvv) throws CartaDiCreditoScadutaException {
-		super(titolare, causale);
+	public CartaDiCredito(String numero, String scadenza, int cvv) throws CartaDiCreditoScadutaException {
 		
 		if (!controlloNumeroCarta(numero)) {
 			throw new IllegalArgumentException("Numero Carta di Credito non valido");
@@ -78,7 +77,6 @@ public class CartaDiCredito extends Pagamento{
 		return dataScadenza.isAfter(dataCorrente);
 	}
 
-	@Override
 	public void effettuaPagamento() {
 		System.out.println("Verifica dei dati immessi");
 		System.out.println("...");
@@ -86,10 +84,17 @@ public class CartaDiCredito extends Pagamento{
 		System.out.println("Pagamento effettuato con successo");
 	}
 
+	public int getCvv() {
+		return cvv;
+	}
+
+	public void setCvv(int cvv) {
+		this.cvv = cvv;
+	}
+
 	@Override
 	public String toString() {
-		return "CartaDiCredito [titolare= "+ super.getTitolare() + ", causale= "+ super.getCausale()+ 
-				", data Esecuzione= "+ super.dataEsecuzioneFormattata()+ ", numero=" + numero + ", scadenza=" + dataScadenzaFormattata() + ", cvv=" + cvv + "]";
+		return "CartaDiCredito [numero=" + numero + ", scadenza=" + scadenza + ", cvv=" + cvv + "]";
 	}
 	
 }
