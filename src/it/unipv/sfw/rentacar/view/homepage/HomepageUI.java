@@ -244,16 +244,5 @@ public class HomepageUI {
 	public void setButtonNoleggio(JButton buttonNoleggio) {
 		this.buttonNoleggio = buttonNoleggio;
 	}
-
-	public static void main(String[] args) throws IOException, TargaNonValidaException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
-		HomepageUI home = new HomepageUI();
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Roma, 71, Milano");
-		UtenteDAO daoUtenti = new UtenteDAO();
-		AutoDAO daoAuto = new AutoDAO();
-		agenzia.setElencoUtenti(daoUtenti.letturaDati());
-		agenzia.setElencoAuto(daoAuto.letturaDati());
-		agenzia.stampaAuto();
-		agenzia.stampaUtenti();
-		HomepageController contr = new HomepageController(agenzia, home);
-	}
+	
 }
