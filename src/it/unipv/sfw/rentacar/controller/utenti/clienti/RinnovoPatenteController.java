@@ -20,6 +20,10 @@ import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.view.utenti.clienti.RinnovoPatenteUI;
 
+/*
+ * Controller RinnovoPatenteUI
+ */
+
 public class RinnovoPatenteController {
 	
 	private AgenziaNoleggioAuto model;

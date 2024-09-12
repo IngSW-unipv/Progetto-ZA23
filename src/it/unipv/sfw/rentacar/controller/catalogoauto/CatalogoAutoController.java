@@ -27,6 +27,10 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 import it.unipv.sfw.rentacar.view.catalogoauto.CatalogoAutoUI;
 
+/*
+ * Controller CatalogoAutoUI
+ */
+
 public class CatalogoAutoController {
 
 	private AgenziaNoleggioAuto model;

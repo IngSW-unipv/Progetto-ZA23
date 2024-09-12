@@ -15,6 +15,10 @@ import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.view.utenti.clienti.CambioPasswordUI;
 
+/*
+ * Controller CambioPasswordUI
+ */
+
 public class CambioPasswordController {
 
 	private AgenziaNoleggioAuto model;

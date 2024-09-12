@@ -15,6 +15,10 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 import it.unipv.sfw.rentacar.view.utenti.amministratori.RimuoviAutoUI;
 
+/*
+ * Controller RimuoviAutoUI
+ */
+
 public class RimuoviAutoController {
 
 	private AgenziaNoleggioAuto model;

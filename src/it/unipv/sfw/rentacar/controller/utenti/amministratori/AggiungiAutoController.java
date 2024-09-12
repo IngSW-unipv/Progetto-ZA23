@@ -23,6 +23,10 @@ import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecnic
 import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
 import it.unipv.sfw.rentacar.view.utenti.amministratori.AggiungiAutoUI;
 
+/*
+ * Controller AggiungiAutoUI
+ */
+
 public class AggiungiAutoController {
 
 	private AgenziaNoleggioAuto model;

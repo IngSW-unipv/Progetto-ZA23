@@ -28,6 +28,10 @@ import it.unipv.sfw.rentacar.model.utenti.Utente;
 import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 import it.unipv.sfw.rentacar.view.accesso.RegistrationUI;
 
+/*
+ * Controller RegistrazioneUI
+ */
+
 public class RegistrationController {
 
 	private AgenziaNoleggioAuto model;

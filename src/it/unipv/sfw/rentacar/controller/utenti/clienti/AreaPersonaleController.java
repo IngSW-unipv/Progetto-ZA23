@@ -13,6 +13,10 @@ import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.view.utenti.clienti.AreaPersonaleUI;
 
+/*
+ * Controller AreaPersonaleUI
+ */
+
 public class AreaPersonaleController {
 
 	private AgenziaNoleggioAuto model;

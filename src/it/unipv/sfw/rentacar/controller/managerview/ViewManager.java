@@ -27,6 +27,10 @@ import it.unipv.sfw.rentacar.view.utenti.clienti.AreaPersonaleUI;
 import it.unipv.sfw.rentacar.view.utenti.clienti.CambioPasswordUI;
 import it.unipv.sfw.rentacar.view.utenti.clienti.RinnovoPatenteUI;
 
+/*
+ * View Manager - Gestore delle View e dei Controller
+ */
+
 public class ViewManager {
 	
 	public ViewManager() {

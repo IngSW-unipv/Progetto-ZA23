@@ -12,6 +12,10 @@ import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.view.homepage.HomepageUI;
 
+/*
+ * Controller HomepageUI
+ */
+
 public class HomepageController {
 
 	private AgenziaNoleggioAuto model;
