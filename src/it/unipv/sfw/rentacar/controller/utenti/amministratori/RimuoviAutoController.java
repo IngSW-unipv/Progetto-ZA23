@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import it.unipv.sfw.rentacar.controller.managerview.ViewManager;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
@@ -128,6 +129,32 @@ public class RimuoviAutoController {
                         "Errore", 
                         JOptionPane.ERROR_MESSAGE);
 				return;
+			}
+		});
+		
+		view.getAnnullaButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(view.getFrame(), 
+						"Sei sicuro di voler annullare l'operazione ?", 
+						"Annullamento Cambio Password", 
+						JOptionPane.YES_NO_OPTION);
+				if (result == JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(view.getFrame(), 
+							"Rimozione Auto Annullata", 
+							"Annullamento", 
+							JOptionPane.ERROR_MESSAGE);
+					ViewManager manager = new ViewManager();
+					try {
+						manager.passaAllaHomePageUI(model);
+					} catch (IOException  e1) {
+						e1.getMessage();
+						return;
+					}
+					view.getFrame().dispose();
+					
+				}
 			}
 		});
 		
