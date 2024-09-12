@@ -4,14 +4,18 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Iterator;
 
+/*
+ * Classe CaratteristicheTecniche
+ */
+
 public class CaratteristicheTecniche {
 
-	private int annoProduzione;
-	private Cambio tipoCambio;
-	private Carburante[] tipoCarburante;
-	private int postiAuto;
-	private int cilindrata;
-	private int potenza;
+	private int annoProduzione; // Anno di produzione dell'auto
+	private Cambio tipoCambio; // Tipologia di cambio dell'auto
+	private Carburante[] tipoCarburante; // Tipologia di carburante dell'auto
+	private int postiAuto; // Numero di posti auto dell'auto
+	private int cilindrata; // Cilindrata dell'auto
+	private int potenza; // Potenza dell'auto
 	
 	public CaratteristicheTecniche(int annoProduzione, Cambio tipoCambio, Carburante[] tipoCarburante, int postiAuto,
 			int cilindrata, int potenza) {
@@ -44,6 +48,8 @@ public class CaratteristicheTecniche {
 		this.potenza = potenza;
 	}
 
+	// Getter e Setter
+	
 	public int getAnnoProduzione() {
 		return annoProduzione;
 	}
@@ -98,7 +104,5 @@ public class CaratteristicheTecniche {
 				+ ", tipoCarburante=" + Arrays.toString(tipoCarburante) + ", postiAuto=" + postiAuto + ", cilindrata="
 				+ cilindrata + ", potenza=" + potenza + "]";
 	}
-	
-	
 	
 }

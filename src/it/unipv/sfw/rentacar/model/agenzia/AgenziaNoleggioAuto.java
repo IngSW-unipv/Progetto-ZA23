@@ -14,16 +14,20 @@ import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
+/*
+ * Classe AgenziaNoleggioAuto
+ */
+
 public class AgenziaNoleggioAuto {
 	
     // Istanza unica della classe (Singleton)
     private static AgenziaNoleggioAuto instance;
 	
-	private String nome;
-	private String indirizzo;
-	private List<Auto> elencoAuto;
-	private List<Utente> elencoUtenti;
-	private List<ContrattoNoleggio> contratti;
+	private String nome; // Nome dell'agenzia
+	private String indirizzo; // Indirizzo dell'agenzia
+	private List<Auto> elencoAuto; // Elenco delle auto dell'agenzia
+	private List<Utente> elencoUtenti; // Elenco degli utenti regitrati (Clienti e Amministratori)
+	private List<ContrattoNoleggio> contratti; // Elenco dei contratti stipulati tra clienti e agenzia
 	
     // Costruttore privato
     private AgenziaNoleggioAuto(String nome, String indirizzo, List<Auto> elencoAuto, List<Utente> elencoUtenti,
@@ -61,7 +65,8 @@ public class AgenziaNoleggioAuto {
         return instance;
     }
 
-	
+    // Getter e Setter
+    
 	public String getNome() {
 		return nome;
 	}
@@ -101,6 +106,8 @@ public class AgenziaNoleggioAuto {
 	public void setContratti(List<ContrattoNoleggio> contratti) {
 		this.contratti = contratti;
 	}
+	
+	// Metodi 
 	
 	public void stampaAuto() {
 		for (Auto a : elencoAuto) {

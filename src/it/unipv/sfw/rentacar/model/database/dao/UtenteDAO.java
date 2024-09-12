@@ -19,11 +19,17 @@ import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
 import it.unipv.sfw.rentacar.model.utenti.Amministratore;
 
+/*
+ * Classe UtenteDAO
+ */
+
 public class UtenteDAO {
 
 	public UtenteDAO() {
 		
 	}
+	
+	// Metodo di aggiunta di un cliente al DB
 	
 	public void aggiungiCliente(Cliente c) throws SQLException {
 		String query = "INSERT INTO utente VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -61,6 +67,8 @@ public class UtenteDAO {
 		}
 	}
 	
+	// Metodo di aggiunta di un amministratore al DB
+	
 	public void aggiungiAmministratore(Amministratore a) throws SQLException {
 		String query = "INSERT INTO utente (username, password, nome, cognome, ruolo) VALUES (?, ?, ?, ?, ?)";
 		try (Connection connection = DatabaseConnection.connessione();
@@ -80,6 +88,8 @@ public class UtenteDAO {
 		}
 	}
 	
+	// Metodo cancellazione di un cliente dal DB 
+	
 	public void cancellaCliente(Cliente c) throws SQLException {
 		String query = "DELETE FROM utente WHERE username = ? AND nome = ? AND cognome = ?";
 		try (Connection connection = DatabaseConnection.connessione();
@@ -93,6 +103,8 @@ public class UtenteDAO {
 		}
 	}
 	
+	// Metodo aggiornamento della password di un cliente
+	
 	public void aggiornaPasswordCliente(Utente utente, String nuovaPassword) throws SQLException {
 		String query = "UPDATE utente SET password = ? WHERE username = ?";
 		try (Connection connection = DatabaseConnection.connessione();
@@ -105,6 +117,8 @@ public class UtenteDAO {
 		}
 		
 	}
+	
+	// Metodo di lettura dei dati dal DB
 	
 	public ArrayList<Utente> letturaDati() throws TargaNonValidaException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException{
 		String query, username, password, nome, cognome, numero_patente, cat1, cat2, cat3, scadenza_patente, data_formattata;
@@ -157,6 +171,8 @@ public class UtenteDAO {
 		return utenti;
 	}
 
+	// Metodo di rinnovo della patente
+	
 	public void rinnovaPatente(Cliente c, LocalDate scadenzaPatente) {
 		String query;
 		
@@ -171,65 +187,7 @@ public class UtenteDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		
-	}
-	
-	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, SQLException, UsernameDuplicatoException, TargaNonValidaException {
-		UtenteDAO dao = new UtenteDAO();
-		
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
-		
-		agenzia.setElencoUtenti(dao.letturaDati()); 
-		agenzia.stampaUtenti();
-		/*
-		String[] categorie1 = {"B"}
-        Patente patente1 = new Patente("AB123456CC", "18/05/2025", categorie1);
-        Cliente cliente1 = new Cliente("Mario", "Rossi", "mrossi", "password123", patente1);
-        
-        String[] categorie2 = {"B", "C"};
-        Patente patente2 = new Patente("CD789012EF", "22/11/2026", categorie2);
-        Cliente cliente2 = new Cliente("Luigi", "Verdi", "lverdi", "password456", patente2);
-        
-        String[] categorie3 = {"B", "C", "D"};
-		Patente patente3 = new Patente("AB123456CC", "18/05/2025", categorie3);
-		Cliente cliente3 = new Cliente("Roberto", "Pitorac" , "Pito", "password789", patente3);
-		
-        String[] categorie4 = {"B", "C", "D"};
-		Patente patente4 = new Patente("AB123456CC", "18/05/2025", categorie4);
-		Cliente cliente4 = new Cliente("Roberto", "Pitorac" , "Pitorac", "password789", patente4);
-		
-		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "PitoSan", "Pitorac01");
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via G. Mazzini, 17");
-		agenzia.aggiungiUtente(amm);
-		agenzia.aggiungiUtente(cliente1);
-		agenzia.aggiungiUtente(cliente2);
-		agenzia.aggiungiUtente(cliente3);
-		agenzia.aggiungiUtente(cliente4);
-		dao.aggiungiAmministratore(amm);
-        dao.aggiungiCliente(cliente1);
-        dao.aggiungiCliente(cliente2);
-        dao.aggiungiCliente(cliente3);	
-        dao.aggiungiCliente(cliente4);	
-        
-        agenzia.stampaUtenti();
-        
-        cliente1.setPassword("pass45");
-        dao.aggiornaPasswordCliente(cliente1, "pass45");
-        agenzia.stampaUtenti();
-        System.out.println("-----");
-        //agenzia.eliminaUtente(cliente1);
-        //dao.cancellaCliente(cliente1);
-        System.out.println("-----");
-        agenzia.stampaUtenti();
-        System.out.println("-----");
-        agenzia.eliminaUtente(cliente2);
-        dao.cancellaCliente(cliente2);
-        agenzia.stampaUtenti();
-        
-        System.out.println("Funziona");
-        */
-	}
+		}	
+	}	
 	
 }

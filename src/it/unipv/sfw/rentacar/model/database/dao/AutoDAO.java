@@ -22,11 +22,17 @@ import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecnic
 import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
+/*
+ * Classe AutoDAO
+ */
+
 public class AutoDAO {
 
 	public AutoDAO() {
 		
 	}
+	
+	// Metodo di aggiunta di un'auto al DB
 	
 	public void aggiungiAuto(Auto a) throws SQLException {
 		String query = "INSERT INTO auto VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -58,6 +64,8 @@ public class AutoDAO {
 		
 	}
 	
+	// Metodo di rimozione di un'auto dal DB
+	
 	public void eliminaAuto(Auto a) {
 		String query = "DELETE FROM auto WHERE targa = ?";
 		try (Connection connection = DatabaseConnection.connessione();
@@ -85,6 +93,8 @@ public class AutoDAO {
 			System.err.println("Errore fase di update");
 		}
 	}
+	
+	// Metodo di Lettura Dati dal DB
 	
 	public ArrayList<Auto> letturaDati() throws TargaNonValidaException{
 		String query;
@@ -139,51 +149,4 @@ public class AutoDAO {
 		return auto;
 	}
 		
-	public static void main(String[] args) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, SQLException {
-		
-		AutoDAO dao = new AutoDAO();
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Mazzini, 17");
-		agenzia.setElencoAuto(dao.letturaDati());
-		
-		agenzia.stampaAuto();
-		
-		/*
-		String[] cat = {"B"};
-		Patente p = new Patente("AB123456CC", "18/05/2025", cat);
-		
-		Utente cl = new Cliente("Roberto", "Pitorac" , "Pito", "Pitorac01", p);
-		Amministratore amm = new Amministratore("Roberto", "Pitorac" , "Pito", "Pitorac01");
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent-a-Car", "Via Mazzini, 17");
-		agenzia.aggiungiUtente(cl);
-		Carburante[] carburante = {Carburante.BENZINA, null};
-		CaratteristicheTecniche ct1 = new CaratteristicheTecniche(2008, Cambio.AUTOMATICO, carburante, 5, 150, 200);
-		Auto a1 = new Auto("AB456CD", "Fiat", "Panda", ct1, 5);
-		Auto a2 = new Auto("CD456AS", "Ford", "Fiesta", ct1, 7.5);
-		Auto a3 = new Auto("EF456AS", "Ford", "Fiesta", ct1, 7.5);
-		AutoDAO dao = new AutoDAO();
-		dao.creaAuto(a1);
-		dao.creaAuto(a2);
-		dao.creaAuto(a3);
-		amm.aggiungiAuto(agenzia, a1);
-		amm.aggiungiAuto(agenzia, a2);
-		amm.aggiungiAuto(agenzia, a3);
-		agenzia.stampaAuto();
-		System.out.println("----");
-		dao.eliminaAuto(a3);
-		amm.rimuoviAuto(agenzia, a3);
-		agenzia.stampaAuto();
-		System.out.println("----");
-		dao.aggiornaStatoNoleggio(a1);
-		amm.aggiornaStatoAuto(agenzia, a1);
-		
-		dao.aggiornaStatoNoleggio(a2);
-		amm.aggiornaStatoAuto(agenzia, a2);
-		
-		dao.aggiornaStatoNoleggio(a1);
-		amm.aggiornaStatoAuto(agenzia, a1);
-		
-		agenzia.stampaAuto();
-		*/
-	}
-	
 }

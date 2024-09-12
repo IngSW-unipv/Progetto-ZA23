@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.exception;
 
+/*
+ * Eccezione Personalizzata UsernameDuplicatoException
+ */
+
 public class UsernameDuplicatoException extends Exception{
 
 	public UsernameDuplicatoException() {

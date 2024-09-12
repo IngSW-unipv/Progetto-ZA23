@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.utenti.documenti;
 
+/*
+ * Classe Patente
+ */
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -12,9 +16,9 @@ import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 
 public class Patente {
 	
-	private String numero;
-	private LocalDate scadenza;
-	private String[] categorie;
+	private String numero; // Codice univoco della patente
+	private LocalDate scadenza; // Data di scadenza della patente
+	private String[] categorie; // Categorie abilitate della patente
 	
 	public Patente(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		
@@ -26,6 +30,8 @@ public class Patente {
 		this.categorie = categorie;
 	}
 
+	// Metodo di controllo patente
+	
 	private void controlli(String numero, String dataScadenza, String[] categorie) throws NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException {
 		if (numero.equals(null) || dataScadenza.equals(null) || categorie.equals(null)) {
 			throw new NullPointerException("I valori non possono essere null");
@@ -43,6 +49,8 @@ public class Patente {
 			throw new CategoriaBPatenteException();
 		}
 	}
+	
+	// Getter e Setter
 	
 	public String getNumero() {
 		return numero;
@@ -70,6 +78,8 @@ public class Patente {
 		return categorie;
 	}
 	
+	// Metodo di verifica della patente
+	
 	public boolean verificaNumeroPatente(String numeroPatente) {
 		
 		String formatoPatente = "^[A-Za-z]{2}\\d{6}+[A-Za-z0-9]{2}$";
@@ -80,12 +90,16 @@ public class Patente {
 		return matcher.matches();
 	}
 	
+	// Metodo di verifica della validità della patente
+	
 	public boolean verificaScadenzaPatente(String scadenza) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dataScadenza = LocalDate.parse(scadenza, formatter);
 		LocalDate dataCorrente = LocalDate.now();
 		return dataScadenza.isAfter(dataCorrente);
 	}
+	
+	// Metodo di controllo della presenza della patente B
 	
 	public boolean controlloPatenteB(String[] categorie) {
 		

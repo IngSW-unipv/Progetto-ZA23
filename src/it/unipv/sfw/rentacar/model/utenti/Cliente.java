@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.utenti;
 
+/*
+ * Classe Utente
+ */
+
 import java.sql.SQLException;
 
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
@@ -10,7 +14,7 @@ import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
 public class Cliente extends Utente {
 
-	private Patente patente;
+	private Patente patente; // Patente del cliente
 	
 	public Cliente(String nome, String cognome, String username, String password, Patente patente) {
 		super(nome, cognome, username, password);
@@ -22,18 +26,14 @@ public class Cliente extends Utente {
 		this.patente = c.getPatente();
 	}
 
+	// Getter e Setter
+	
 	public Patente getPatente() {
 		return patente;
 	}
 
 	public void setPatente(Patente patente) {
 		this.patente = patente;
-	}
-	
-	public void noleggiaAuto(AgenziaNoleggioAuto agenzia, Auto a, String inizioNoleggio, String fineNoleggio, CartaDiCredito carta) throws SQLException {
-		carta.effettuaPagamento();
-		ContrattoNoleggio contratto = new ContrattoNoleggio(this, a, inizioNoleggio, fineNoleggio, carta);
-		agenzia.aggiungiContratto(contratto);
 	}
 
 	@Override

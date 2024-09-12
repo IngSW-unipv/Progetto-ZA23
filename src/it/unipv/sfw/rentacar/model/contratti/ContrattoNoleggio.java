@@ -3,23 +3,27 @@ package it.unipv.sfw.rentacar.model.contratti;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import java.time.temporal.ChronoUnit;
 import it.unipv.sfw.rentacar.model.contratti.pagamenti.CartaDiCredito;
 import it.unipv.sfw.rentacar.model.database.dao.ContrattoNoleggioDAO;
 import it.unipv.sfw.rentacar.model.utenti.Cliente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
+/*
+ * Classe ContrattoNoleggio
+ */
+
 public class ContrattoNoleggio {
 
-	private static int ID;
-	private String idContratto;
-	private Cliente cliente;
-	private Auto auto;
-	private LocalDate inizioNoleggio;
-	private LocalDate fineNoleggio;
-	private double importo;
-	private CartaDiCredito pagamento;
+	private static int ID; // ID univoco per i contratti
+	private String idContratto; // Stringa univoca che identifica un contratto di noleggio
+	private Cliente cliente; // Cliente che stipula il contratto
+	private Auto auto; // Auto noleggiata
+	private LocalDate inizioNoleggio; // Data inizio noleggio
+	private LocalDate fineNoleggio; // Data fine noleggio
+	private double importo; // Costo totale noleggio
+	private CartaDiCredito pagamento; // Carta di credito 
 	
 	public ContrattoNoleggio(Cliente cliente, Auto auto, String inizioNoleggio, String fineNoleggio, CartaDiCredito pagamento) {
 		
@@ -46,6 +50,8 @@ public class ContrattoNoleggio {
 		this.auto.setStatoNoleggio(Noleggio.NOLEGGIATA);
 		//incrementaID();
 	}
+	
+	// Getter e Setter
 	
 	public static int getID() {
 		return ID;

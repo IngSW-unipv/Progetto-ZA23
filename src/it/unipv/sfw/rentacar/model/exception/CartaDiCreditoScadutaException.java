@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.exception;
 
+/*
+ * Eccezione Personalizzata CartaDiCreditoScadutaException
+ */
+
 public class CartaDiCreditoScadutaException extends Exception{
 
 	public CartaDiCreditoScadutaException() {

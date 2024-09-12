@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.exception;
 
+/*
+ * Eccezione Personalizzata TargaNonValidaException
+ */
+
 public class TargaNonValidaException extends Exception{
 
 	public TargaNonValidaException() {

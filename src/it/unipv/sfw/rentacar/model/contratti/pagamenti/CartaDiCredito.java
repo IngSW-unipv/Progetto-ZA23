@@ -7,11 +7,15 @@ import java.util.regex.Pattern;
 
 import it.unipv.sfw.rentacar.model.exception.CartaDiCreditoScadutaException;
 
+/*
+ * Classe CartaDiCredito
+ */
+
 public class CartaDiCredito{
 
-	private String numero;
-	private LocalDate scadenza;
-	private int cvv;
+	private String numero; // Numero identificativo della carta
+	private LocalDate scadenza; // Data di scadenza della carta
+	private int cvv; // Codice CVV della carta
 	
 	public CartaDiCredito(String numero, String scadenza, int cvv) throws CartaDiCreditoScadutaException {
 		
@@ -32,6 +36,8 @@ public class CartaDiCredito{
 		this.scadenza = LocalDate.parse(scadenza, formatter);
 		this.cvv = cvv;
 	}
+	
+	// Getter e Setter
 	
 	public String getNumero() {
 		return numero;
@@ -61,6 +67,16 @@ public class CartaDiCredito{
 		this.cvv = cvv;
 	}
 
+	public int getCvv() {
+		return cvv;
+	}
+
+	public void setCvv(int cvv) {
+		this.cvv = cvv;
+	}
+	
+	// Metodi
+	
 	private boolean controlloNumeroCarta(String numero) {
 		String formatoCartaDiCredito = "^(\\d{4}-?){3}\\d{4}$";
 		Pattern pattern = Pattern.compile(formatoCartaDiCredito);
@@ -82,14 +98,6 @@ public class CartaDiCredito{
 		System.out.println("...");
 		System.out.println("...");
 		System.out.println("Pagamento effettuato con successo");
-	}
-
-	public int getCvv() {
-		return cvv;
-	}
-
-	public void setCvv(int cvv) {
-		this.cvv = cvv;
 	}
 
 	@Override

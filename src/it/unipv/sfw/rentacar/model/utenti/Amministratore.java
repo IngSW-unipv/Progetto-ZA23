@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.utenti;
 
+/*
+ * Classe Amministratore
+ */
+
 import java.sql.SQLException;
 
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
@@ -13,17 +17,23 @@ public class Amministratore extends Utente{
 		super(nome, cognome, username, password);
 	}
 	
+	// Metodo aggiunta auto
+	
 	public void aggiungiAuto(AgenziaNoleggioAuto agenzia, Auto a) throws SQLException {
 		agenzia.getElencoAuto().add(a);
 		AutoDAO dao = new AutoDAO();
 		dao.aggiungiAuto(a);
 	}
 	
+	// Metodo rimozione auto
+	
 	public void rimuoviAuto(AgenziaNoleggioAuto agenzia, Auto a) {
 		agenzia.getElencoAuto().remove(a);
 		AutoDAO dao = new AutoDAO();
 		dao.eliminaAuto(a);
 	}
+	
+	// Metodo Aggiornamento Stato Auto
 	
 	public void aggiornaStatoAuto(Auto a) {
 		if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE)) 

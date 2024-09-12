@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.exception;
 
+/*
+ * Eccezione Personalizzata NumeroPatenteInvalidoException
+ */
+
 public class NumeroPatenteInvalidoException extends Exception{
 
 	public NumeroPatenteInvalidoException() {

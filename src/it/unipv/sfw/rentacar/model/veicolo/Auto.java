@@ -1,5 +1,9 @@
 package it.unipv.sfw.rentacar.model.veicolo;
 
+/*
+ * Classe Auto
+ */
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,12 +15,12 @@ import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 
 public class Auto implements INoleggiabile{
 
-	private String targa;
-	private String marca;
-	private String modello;
-	private CaratteristicheTecniche caratteristicheTecniche;
-	private double costoNoleggioGiornaliero;
-	private Noleggio statoNoleggio;
+	private String targa; // Targa dell'auto
+	private String marca; // Marca dell'auto
+	private String modello; // Modello dell'auto
+	private CaratteristicheTecniche caratteristicheTecniche; // Caratteristiche dell'auto
+	private double costoNoleggioGiornaliero; // Costo giornaliero di noleggio dell'auto
+	private Noleggio statoNoleggio; // Stato noleggio dell'auto
 	
 	public Auto(String targa, String marca, String modello, CaratteristicheTecniche caratteristicheTecniche, double costoNoleggioGiornaliero) throws TargaNonValidaException {
 		
@@ -55,6 +59,8 @@ public class Auto implements INoleggiabile{
 		this.costoNoleggioGiornaliero = costoNoleggioGiornaliero;
 		this.statoNoleggio = Noleggio.DISPONIBILE;
 	}
+	
+	// Getter e Setter
 	
 	public String getTarga() {
 		return targa;
@@ -103,6 +109,8 @@ public class Auto implements INoleggiabile{
 	public void setStatoNoleggio(Noleggio statoNoleggio) {
 		this.statoNoleggio = statoNoleggio;
 	}
+	
+	// Metodi
 	
 	public void cambioStatoNoleggio() {
 		if (statoNoleggio.equals(Noleggio.DISPONIBILE)) {

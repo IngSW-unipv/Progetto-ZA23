@@ -1,11 +1,15 @@
 package it.unipv.sfw.rentacar.model.utenti;
 
+/*
+ * Classe Utente
+ */
+
 public abstract class Utente {
 
-	private String nome;
-	private String cognome;
-	private String username;
-	private String password;
+	private String nome; // Nome dell'utente
+	private String cognome; // Cognome dell'utente
+	private String username; // Username dell'utente
+	private String password; // Password dell'utente
 	
 	public Utente(String nome, String cognome, String username, String password) {
 		
@@ -16,6 +20,8 @@ public abstract class Utente {
 		this.username = username;
 		this.password = password;
 	}
+	
+	// Metodo di controllo degli attributi
 	
 	private void controlli(String nome, String cognome, String username, String password) {
 		if (nome.equals(null)) {
@@ -51,6 +57,8 @@ public abstract class Utente {
 		}
 	}
 
+	// Getter e Setter
+	
 	public String getNome() {
 		return nome;
 	}
