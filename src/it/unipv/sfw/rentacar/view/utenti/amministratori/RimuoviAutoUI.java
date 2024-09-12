@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View RimuoviAuto
+ */
+
 public class RimuoviAutoUI {
 
 	private CustomFrame frame;
@@ -66,6 +70,8 @@ public class RimuoviAutoUI {
 		frame.setVisible(true);
 	}
 
+	// Getter e Setter
+	
 	public CustomFrame getFrame() {
 		return frame;
 	}

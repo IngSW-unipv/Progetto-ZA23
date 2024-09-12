@@ -25,6 +25,10 @@ import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Cambio;
 import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View AggiungiAuto
+ */
+
 public class AggiungiAutoUI {
 
 	private CustomFrame frame;
@@ -262,9 +266,7 @@ public class AggiungiAutoUI {
 		frame.setVisible(true);
 	}
 	
-	public static void main(String[] args) throws IOException {
-		new AggiungiAutoUI();
-	}
+	// Getter e Setter
 	
 	public CustomFrame getFrame() {
 		return frame;
@@ -499,6 +501,8 @@ public class AggiungiAutoUI {
 		this.aggiungiAutoButton = aggiungiAutoButton;
 	}
 
+	// Metodo
+	
 	private void setDimensione(JComponent campo) {
 		campo.setPreferredSize(new Dimension(150, 20));
 	}

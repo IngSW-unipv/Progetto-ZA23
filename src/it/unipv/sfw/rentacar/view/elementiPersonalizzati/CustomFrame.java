@@ -13,6 +13,10 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
+/*
+ * Elemento Personalizzato Custom Frame
+ */
+
 public class CustomFrame extends JFrame{
 
 	private File iconFile;
@@ -57,6 +61,8 @@ public class CustomFrame extends JFrame{
         this.setVisible(true);
     }
 
+	// Getter e Setter
+	
 	public File getIconFile() {
 		return iconFile;
 	}

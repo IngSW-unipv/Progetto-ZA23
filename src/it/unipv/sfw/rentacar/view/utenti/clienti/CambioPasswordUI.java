@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ *  View CambioPassword
+ */
+
 public class CambioPasswordUI {
 
 	private CustomFrame frame;
@@ -78,9 +82,7 @@ public class CambioPasswordUI {
         frame.setVisible(true);
 	}
 	
-	public static void main(String[] args) throws IOException {
-		new CambioPasswordUI();
-	}
+	// Getter e Setter
 
 	public CustomFrame getFrame() {
 		return frame;

@@ -15,6 +15,10 @@ import it.unipv.sfw.rentacar.controller.accesso.LoginController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View Login
+ */
+
 public class LoginUI {
 
 	private CustomFrame frame;
@@ -72,6 +76,8 @@ public class LoginUI {
 		frame.setVisible(true);
 	}
 
+	// Getter e Setter
+	
 	public CustomFrame getFrame() {
 		return frame;
 	}
@@ -126,11 +132,6 @@ public class LoginUI {
 
 	public void setLoginButton(JButton loginButton) {
 		this.loginButton = loginButton;
-	}
-	
-	public static void main(String[] args) throws IOException {
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent", "Via Roma, Mediglia");
-		new LoginController(agenzia, new LoginUI());
 	}
 	
 }

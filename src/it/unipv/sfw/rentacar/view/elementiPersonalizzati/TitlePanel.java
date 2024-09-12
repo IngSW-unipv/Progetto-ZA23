@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 
+/*
+ * Elemento Personalizzato
+ */
+
 public class TitlePanel extends JPanel{
 
 	private ImageIcon imageIcon;
@@ -70,10 +74,12 @@ public class TitlePanel extends JPanel{
         
         if (SessioneLogin.getInstance().isLoggedIn()) {
 			this.modalitàCliente();
-		}else
+		} else
 			this.modalitàLogout();
         
 	}
+	
+	// Getter e Setter
 
 	public ImageIcon getImageIcon() {
 		return imageIcon;
@@ -130,6 +136,8 @@ public class TitlePanel extends JPanel{
 	public void setLogoutButton(JButton logoutButton) {
 		this.logoutButton = logoutButton;
 	}
+	
+	// Metodi
 	
 	public void modalitàCliente() {
 		this.getLoginButton().setVisible(false);

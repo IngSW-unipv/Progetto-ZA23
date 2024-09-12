@@ -17,6 +17,10 @@ import com.toedter.calendar.JDateChooser;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View RinnovoPatente
+ */
+
 public class RinnovoPatenteUI {
 
 	private CustomFrame frame;
@@ -72,6 +76,8 @@ public class RinnovoPatenteUI {
 		
 		frame.setVisible(true);
 	}
+	
+	// Getter e Setter
 
 	public CustomFrame getFrame() {
 		return frame;

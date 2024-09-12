@@ -19,6 +19,10 @@ import com.toedter.calendar.JDateChooser;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View NoleggioAuto
+ */
+
 public class NoleggioAutoUI {
 
 	private CustomFrame frame;
@@ -341,9 +345,7 @@ public class NoleggioAutoUI {
         frame.setVisible(true);
 	}
 	
-	public static void main(String[] args) throws IOException {
-		NoleggioAutoUI noleggio = new NoleggioAutoUI();
-	}
+	// Getter e Setter
 	
 	public CustomFrame getFrame() {
 		return frame;

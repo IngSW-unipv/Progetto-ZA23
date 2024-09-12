@@ -13,6 +13,10 @@ import javax.swing.border.CompoundBorder;
 
 import it.unipv.sfw.rentacar.model.utenti.log.SessioneLogin;
 
+/*
+ * Elemento Personalizzato SideBaPanel
+ */
+
 public class SideBarPanel extends JPanel{
 
 	private JLabel homeLabel;
@@ -72,10 +76,12 @@ public class SideBarPanel extends JPanel{
         
         if (SessioneLogin.getInstance().isLoggedIn()) {
 			this.modalitàUtente();
-		}else
+		} else
 			this.modalitàLogout();
         
 	}
+	
+	// Getter e Setter
 
 	public JLabel getNoleggioLabel() {
 		return noleggioLabel;
@@ -157,10 +163,12 @@ public class SideBarPanel extends JPanel{
 		this.rimuoviAutoButton = rimuoviAutoButton;
 	}
 
+	// Metodi
+	
 	private void setButtonDimension(JButton button) {
     	button.setMaximumSize(new Dimension(150, 35));
     }
-	
+		
 	public void modalitàUtente() {
 		if (SessioneLogin.getInstance().getUtenteLoggato().ruolo().equals("Cliente")) {
 			this.getAreaPersonaleButton().setVisible(true);

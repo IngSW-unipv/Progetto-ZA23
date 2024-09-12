@@ -20,6 +20,10 @@ import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View Homepage
+ */
+
 public class HomepageUI {
 
 	private CustomFrame frame;
@@ -119,6 +123,8 @@ public class HomepageUI {
 
 	}
 
+	// Getter e Setter
+	
 	public CustomFrame getFrame() {
 		return frame;
 	}

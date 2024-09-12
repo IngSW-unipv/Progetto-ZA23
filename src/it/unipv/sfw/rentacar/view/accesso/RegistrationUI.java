@@ -15,6 +15,10 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JTextField;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View Registation
+ */
+
 public class RegistrationUI {
 	
 	private CustomFrame frame;
@@ -39,10 +43,6 @@ public class RegistrationUI {
 	private JCheckBox categoriePatenteC;
 	private JButton registrazioneButton;
 
-	public static void main(String[] args) throws IOException {
-		new RegistrationUI();
-	}
-	
 	public RegistrationUI() throws IOException {
 		frame = new CustomFrame();
 		
@@ -172,6 +172,8 @@ public class RegistrationUI {
 		
 	}
 
+	// Getter e Setter
+	
 	public CustomFrame getFrame() {
 		return frame;
 	}

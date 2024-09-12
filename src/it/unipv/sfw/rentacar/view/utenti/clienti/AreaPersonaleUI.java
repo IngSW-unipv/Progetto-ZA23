@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
+/*
+ * View AreaPersonale
+ */
+
 public class AreaPersonaleUI {
 
 	private CustomFrame frame;
@@ -148,6 +152,8 @@ public class AreaPersonaleUI {
 		
 		frame.setVisible(true);
 	}
+	
+	// Getter e Setter
 	
 	public JLabel getNomeLabel() {
 		return nomeLabel;
@@ -308,6 +314,8 @@ public class AreaPersonaleUI {
 	public void setAuto(JLabel auto) {
 		this.auto = auto;
 	}
+	
+	// Metodi
 
 	private void setFontTitoli(JLabel label) {
 		label.setFont(new Font("Arial", Font.PLAIN, 30));
