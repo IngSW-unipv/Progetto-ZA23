@@ -1,59 +1,49 @@
 package it.unipv.sfw.rentacar.view.catalogoauto;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.io.IOException;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UnsupportedLookAndFeelException;
-
-import it.unipv.sfw.rentacar.controller.catalogoauto.CatalogoAutoController;
-import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
 import it.unipv.sfw.rentacar.model.exception.CategoriaBPatenteException;
 import it.unipv.sfw.rentacar.model.exception.NumeroPatenteInvalidoException;
 import it.unipv.sfw.rentacar.model.exception.PatenteScadutaException;
 import it.unipv.sfw.rentacar.model.exception.TargaNonValidaException;
 import it.unipv.sfw.rentacar.model.exception.UsernameDuplicatoException;
-import it.unipv.sfw.rentacar.model.utenti.Amministratore;
-import it.unipv.sfw.rentacar.model.utenti.Cliente;
-import it.unipv.sfw.rentacar.model.utenti.Utente;
-import it.unipv.sfw.rentacar.model.utenti.documenti.Patente;
 import it.unipv.sfw.rentacar.model.veicolo.Auto;
-import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Cambio;
-import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.CaratteristicheTecniche;
-import it.unipv.sfw.rentacar.model.veicolo.caratteristiche.Carburante;
-import it.unipv.sfw.rentacar.model.veicolo.noleggio.Noleggio;
 import it.unipv.sfw.rentacar.view.elementiPersonalizzati.CustomFrame;
 
 public class CatalogoAutoUI {
 
 	private CustomFrame frame;
 	private JPanel ricercaPanel;
+	private JPanel catalogo;
     private JTextField ricercaMarca;
     private JTextField ricercaModello;
     private JLabel marcaLabel;
     private JLabel modelloLabel;
 	private JButton cercaButton;
-
-	// Da modificare -> La logica va nel controller
 	
 	public CatalogoAutoUI() throws IOException, UnsupportedLookAndFeelException {
 		
 		frame = new CustomFrame();
-		
-		frame.getMainPanel().setLayout(new GridLayout(0, 1, 10, 10));
 
+		frame.getMainPanel().setLayout(new BorderLayout());
+		
 		GridBagConstraints gbc = new GridBagConstraints();
         ricercaPanel = new JPanel();
-        ricercaPanel.setBackground(new Color(173, 233, 255));
+        ricercaPanel.setBackground(new Color(168, 255, 184));
         ricercaPanel.setLayout(new GridBagLayout());
         ricercaMarca = new JTextField(10);
         JLabel marcaLabel = new JLabel("Marca : ");
@@ -61,46 +51,54 @@ public class CatalogoAutoUI {
         JLabel modelloLabel = new JLabel("Modello : ");
         cercaButton = new JButton("Cerca");
         
-        ricercaPanel.add(marcaLabel);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        ricercaPanel.add(marcaLabel, gbc);
+        ricercaPanel.add(marcaLabel);
+
         gbc.gridx = 1;
         gbc.gridy = 0;
-        ricercaPanel.add(ricercaMarca, gbc);
+        ricercaPanel.add(marcaLabel, gbc);
+
         gbc.gridx = 2;
         gbc.gridy = 0;
-        ricercaPanel.add(modelloLabel, gbc);
+        ricercaPanel.add(ricercaMarca, gbc);
+
         gbc.gridx = 3;
         gbc.gridy = 0;
-        ricercaPanel.add(ricercaModello, gbc);
+        ricercaPanel.add(modelloLabel, gbc);
+
         gbc.gridx = 4;
         gbc.gridy = 0;
-        ricercaPanel.add(cercaButton);
+        ricercaPanel.add(ricercaModello, gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 0;
+        ricercaPanel.add(cercaButton, gbc);
         
-        frame.getMainPanel().add(ricercaPanel);
+        frame.getMainPanel().add(ricercaPanel, BorderLayout.NORTH);
         
-        /*
-		for (Auto a : agenzia.getElencoAuto()) {
-			if (a.getStatoNoleggio().equals(Noleggio.DISPONIBILE)) {
-				JPanel cardAuto = creaCardAuto(a);
-				frame.getMainPanel().add(cardAuto);
-			}
-		}
-		*/
+        catalogo = new JPanel();
+        catalogo.setLayout(new GridLayout(0, 3, 10, 10));
+        
+        frame.getMainPanel().add(catalogo, BorderLayout.CENTER);
+        
 		JScrollPane scrollPane = new JScrollPane(frame.getMainPanel());
 		frame.add(scrollPane);
 		
 		frame.getMainPanel().setVisible(true);
 		frame.setVisible(true);
 	}
-	
+	/*
 	public JPanel creaCardAuto(Auto a) throws UnsupportedLookAndFeelException {
 	
 		JPanel auto = new JPanel();
-		auto.setLayout(new BoxLayout(auto, BoxLayout.Y_AXIS));
+		GridBagConstraints gbc = new GridBagConstraints();
+		auto.setLayout(new GridBagLayout());
+		gbc.insets = new Insets(5, 5, 5, 5); 
+		
 		auto.setPreferredSize(new Dimension(200, 100));
-		auto.setBackground(Color.WHITE);
+		auto.setBackground(Color.ORANGE);
+		
 		auto.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 		
 		marcaLabel = new JLabel("Marca: " + a.getMarca());
@@ -108,14 +106,22 @@ public class CatalogoAutoUI {
         JLabel costoNoleggioLabel = new JLabel("Costo Noleggio Giornaliero: " + a.getCostoNoleggioGiornaliero() + " €");
 		JButton noleggiaButton = new JButton("Noleggia");
         
-        auto.add(marcaLabel);
-        auto.add(modelloLabel);
-        auto.add(costoNoleggioLabel);
-        auto.add(noleggiaButton);
+		gbc.gridx = 0;
+        gbc.gridy = 0;
+        auto.add(marcaLabel, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        auto.add(modelloLabel, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        auto.add(costoNoleggioLabel, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        auto.add(noleggiaButton, gbc);
         
 		return auto;
 	}
-	
+	/*
 	public static void main(String[] args) throws IOException, NumeroPatenteInvalidoException, PatenteScadutaException, CategoriaBPatenteException, TargaNonValidaException, UnsupportedLookAndFeelException, UsernameDuplicatoException {
 		/*
 		String[] cat = {"B"};
@@ -152,9 +158,9 @@ public class CatalogoAutoUI {
 		amm.aggiungiAuto(agenzia, a7);
 		amm.aggiungiAuto(agenzia, a8);
 		*/
-		AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent a Car","Via roma, mediglia");
-		new CatalogoAutoController(agenzia, new CatalogoAutoUI());
-	}
+		//AgenziaNoleggioAuto agenzia = AgenziaNoleggioAuto.getInstance("Rent a Car","Via roma, mediglia");
+		//new CatalogoAutoController(agenzia, new CatalogoAutoUI());
+	//}
 
 	public JTextField getRicercaMarca() {
 		return ricercaMarca;
@@ -210,6 +216,14 @@ public class CatalogoAutoUI {
 
 	public void setFrame(CustomFrame frame) {
 		this.frame = frame;
+	}
+
+	public JPanel getCatalogo() {
+		return catalogo;
+	}
+
+	public void setCatalogo(JPanel catalogo) {
+		this.catalogo = catalogo;
 	}
 
 }
