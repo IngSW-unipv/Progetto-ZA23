@@ -7,6 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import it.unipv.sfw.rentacar.controller.accesso.RegistrationController;
 import it.unipv.sfw.rentacar.controller.accesso.LoginController;
 import it.unipv.sfw.rentacar.controller.catalogoauto.CatalogoAutoController;
+import it.unipv.sfw.rentacar.controller.catalogoauto.NoleggioAutoController;
 import it.unipv.sfw.rentacar.controller.homepage.HomepageController;
 import it.unipv.sfw.rentacar.controller.utenti.amministratori.AggiungiAutoController;
 import it.unipv.sfw.rentacar.controller.utenti.amministratori.RimuoviAutoController;
@@ -14,9 +15,11 @@ import it.unipv.sfw.rentacar.controller.utenti.clienti.AreaPersonaleController;
 import it.unipv.sfw.rentacar.controller.utenti.clienti.CambioPasswordController;
 import it.unipv.sfw.rentacar.controller.utenti.clienti.RinnovoPatenteController;
 import it.unipv.sfw.rentacar.model.agenzia.AgenziaNoleggioAuto;
+import it.unipv.sfw.rentacar.model.veicolo.Auto;
 import it.unipv.sfw.rentacar.view.accesso.LoginUI;
 import it.unipv.sfw.rentacar.view.accesso.RegistrationUI;
 import it.unipv.sfw.rentacar.view.catalogoauto.CatalogoAutoUI;
+import it.unipv.sfw.rentacar.view.catalogoauto.NoleggioAutoUI;
 import it.unipv.sfw.rentacar.view.homepage.HomepageUI;
 import it.unipv.sfw.rentacar.view.utenti.amministratori.AggiungiAutoUI;
 import it.unipv.sfw.rentacar.view.utenti.amministratori.RimuoviAutoUI;
@@ -64,5 +67,9 @@ public class ViewManager {
 	
 	public void passaARimuoviAutoUI(AgenziaNoleggioAuto agenzia) throws IOException {
 		new RimuoviAutoController(agenzia, new RimuoviAutoUI());
+	}
+	
+	public void passaANoleggioAutoUI(AgenziaNoleggioAuto agenzia, Auto a) throws IOException {
+		new NoleggioAutoController(agenzia, new NoleggioAutoUI(), a);
 	}
 }
