@@ -29,6 +29,8 @@ public class AreaPersonaleUI {
 	private JLabel autoLabel;
 	private JLabel aggiornaPatenteLabel;
 	private JLabel numeroPatenteLabel;
+	private JLabel idContratto;
+	private JLabel auto;
 	private JTextField nomeField;
 	private JTextField cognomeField;
 	private JTextField usernameField;
@@ -130,8 +132,21 @@ public class AreaPersonaleUI {
         setFontLabel(autoLabel);
         mainPanel.add(autoLabel, gbc);
 		
-		//frame.pack();
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        idContratto = new JLabel();
+        setFontLabel(idContratto);
+        mainPanel.add(idContratto, gbc);
+        
+        gbc.gridx = 1;
+        gbc.gridy = 8;
+        auto = new JLabel();
+        setFontLabel(auto);
+        mainPanel.add(auto, gbc);
+        
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		frame.setVisible(true);
 	}
 	
 	public JLabel getNomeLabel() {
@@ -276,6 +291,22 @@ public class AreaPersonaleUI {
 
 	public void setAggiornaPatenteButton(JButton aggiornaPatenteButton) {
 		this.aggiornaPatenteButton = aggiornaPatenteButton;
+	}
+
+	public JLabel getIdContratto() {
+		return idContratto;
+	}
+
+	public void setIdContratto(JLabel idContratto) {
+		this.idContratto = idContratto;
+	}
+
+	public JLabel getAuto() {
+		return auto;
+	}
+
+	public void setAuto(JLabel auto) {
+		this.auto = auto;
 	}
 
 	private void setFontTitoli(JLabel label) {
