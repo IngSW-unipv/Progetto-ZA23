@@ -70,18 +70,17 @@ public class AutoDAO {
 	}
 	
 	public void aggiornaStatoNoleggio(Auto a) {
+		
 		String query = "UPDATE auto SET stato_noleggio = ? WHERE targa = ?; ";
+		System.out.println("Stato noleggio attuale : " + a.getStatoNoleggio().toString());
+		
 		try (Connection connection = DatabaseConnection.connessione();
 	            PreparedStatement stmt = connection.prepareStatement(query)) {
-			if (a.getStatoNoleggio() == Noleggio.NOLEGGIATA) {
-				stmt.setString(1, Noleggio.DISPONIBILE.name());
-				stmt.setString(2, a.getTarga());
-				stmt.executeUpdate();
-			}else {
-				stmt.setString(1, Noleggio.NOLEGGIATA.name());
-				stmt.setString(2, a.getTarga());
-				stmt.executeUpdate();
-			}
+				
+			stmt.setString(1, a.getStatoNoleggio().name());
+			stmt.setString(2, a.getTarga());
+			stmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			System.err.println("Errore fase di update");
 		}
